@@ -1,0 +1,187 @@
+.login{
+  background: no-repeat center/cover image-url('login_bg.jpg');
+  min-height: calc(100vh - 170px);
+  padding: 40px 0 64px;
+  .wrapper{
+    // ======= ログイン画面 ========
+    &.login{
+      display: flex;
+      justify-content: space-between;
+      padding: 0 80px;
+    }
+    aside{
+      width: 36%;
+      padding-top: 48px;
+      h4{
+        font-size: 4.4rem;
+        font-weight: 600;
+        font-style: italic;
+        line-height: 1.2;
+      }
+      ul{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+        li{
+          width: 48%;
+          padding: 80px 0 32px;
+          font-size: 6.8rem;
+          line-height: 1;
+          text-align: center;
+          &.month{
+            background: no-repeat center/contain image-url('login_month.png');
+          }
+          &.day{
+            background: no-repeat center/contain image-url('login_day.png');
+          }
+        }
+      }
+    }
+    section{
+      background-color: #fff;
+      width: 56%;
+      border-radius: 24px;
+      padding: 40px 52px;
+    }
+      h2{
+        font-size: 2.2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+      a{
+        font-size: 1.4rem;
+        line-height: 2.0;
+        color: #555;
+        text-decoration: underline;
+      }
+      .field{
+        width: 100%;
+        margin-top: 24px;
+        font-size: 1.6rem;
+        p{
+          display: inline-block;
+          font-weight: bold;
+          line-height: 1.4;
+          margin-bottom: 4px;
+          &._required{
+            position: relative;
+            &::after{
+              content: '必須';
+              position: absolute;
+              top: 50%;
+              right: -42px;
+              transform: translateY(-50%);
+              background-color: #dc003e;
+              padding: 3px 6px;
+              border-radius: 4px;
+              color: #fff;
+              font-size: 1.3rem;
+              line-height: 1;
+            }
+          }
+          &._any{
+            position: relative;
+            &::after{
+              content: '任意';
+              position: absolute;
+              top: 50%;
+              right: -42px;
+              transform: translateY(-50%);
+              background-color: #6ab480;
+              padding: 3px 6px;
+              border-radius: 4px;
+              color: #fff;
+              font-size: 1.3rem;
+              line-height: 1;
+            }
+          }
+        }
+        .text_field{
+          background-color: #e4eee7;
+          width: 100%;
+          border: none;
+          border-radius: 8px;
+          padding: 12px 20px;
+          font-size: 1.5rem;
+          &:focus{
+            background-color: #e4eee7;
+          }
+          &:-webkit-autofill{
+            transition: background-color 5000s ease-in-out 0s !important;
+          }
+        }
+        span{
+          font-size: 1.3rem;
+          line-height: 1;
+        }
+      }
+      .btn{
+        width: 72%;
+        margin: 32px auto;
+        font-weight: bold;
+        text-align: center;
+        &.actions{
+          input{
+            background-color: #1d945d;
+            color: #fff;
+          }
+        }
+        &.registrations{
+          a{
+            color: #1d945d;
+            text-decoration: none;
+          }
+        }
+        input,a{
+          width: 100%;
+          display: inline-block;
+          padding: 16px 0;
+          border: 3px solid #1d945d;
+          font-size: 1.8rem;
+          line-height: 1;
+          border-radius: 12px;
+        }
+      }
+  // ======= 新規登録画面 ========
+  &.register{
+    max-width: 720px;
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 40px 72px;
+    .field{
+      input[name="user[nickname]"],input[name="user[password]"],
+      input[name="user[password_confirmation]"],.form-list{
+        max-width: 360px;
+      }
+      .form-list{
+        position: relative;
+        select{
+          -webkit-appearance: none;
+          appearance: none;
+        }
+        &::before{
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 16px;
+          transform: translateY(-50%);
+          width: 0;
+          border-top: 7px solid #1d945d;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+        }
+      }
+      ._profile{
+        height: 120px;
+      }
+    }
+  }
+  }
+  .ttl{
+    font-size: 3.2rem;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+}

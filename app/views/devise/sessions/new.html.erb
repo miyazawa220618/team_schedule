@@ -1,0 +1,50 @@
+<%= render "shared/header"%>
+
+<main class="login">
+  <div class="wrapper login">
+
+    <aside class="f-en">
+      <h4>have a<br>good day<br>at work. </h4>
+      <ul>
+        <li class="month"><%= Date.current.strftime('%m') %></li>
+        <li class="day"><%= Date.current.strftime('%d') %></li>
+      </ul>
+    </aside>
+
+    <section>
+      <h2>ログイン</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <p>メールアドレス</p><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text_field" %>
+        </div>
+
+        <div class="field">
+          <p>パスワード</p><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "text_field" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <span>ログイン状態を保持する</span>
+          </div>
+        <% end %>
+
+        <div class="btn actions">
+          <%= f.submit "ログイン" %>
+        </div>
+        <div class="btn registrations">
+          <%= link_to "新規の方はこちら", new_user_registration_path %>
+        </div>
+      <% end %>
+
+
+    <%= render "devise/shared/links" %>
+    </section>
+
+  </div>
+</main>
+
+<%= render "shared/footer"%>
