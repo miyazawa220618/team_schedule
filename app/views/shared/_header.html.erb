@@ -1,0 +1,13 @@
+<header>
+  <h2><%= link_to image_tag("team_schedule_logo.png") , "/", class:"header_logo" %></h2>
+  <nav>
+  <% if user_signed_in? %>
+    <%= link_to "プロジェクト", "#", class: "header_list" %>
+    <%= link_to "カレンダー", "#", class: "header_list" %>
+    <%= link_to "マイページ", "#", class: "header_list" %>
+    <%= link_to "ログアウト", destroy_user_session_path, class: "header_list" %>
+  <% else %>
+    <%= link_to "新規登録", new_user_registration_path, class: "header_list" %>
+  <% end %>
+  </nav>
+</header>
