@@ -1,0 +1,71 @@
+<%= render "shared/header"%>
+<main class="login">
+  <div class="wrapper register">
+    <h2>ユーザー情報の編集 <%= resource_name.to_s.humanize %></h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <p class="_required">ニックネーム</p><br />
+        <%= f.text_field :nickname, autofocus: true, class: "text_field" %>
+      </div>
+
+      <div class="field">
+        <p class="_required">メールアドレス</p><br />
+        <%= f.email_field :email, autocomplete: "email", class: "text_field" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <p class="_required">パスワード</p> <i>(変更しない場合は空白のままにしてください)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "text_field" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %>文字以上・半角英数字の組合せ</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <p class="_required">パスワード（確認用）</p><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text_field" %>
+      </div>
+
+      <div class="field">
+        <p class="_required">現在のパスワードを入力</p><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "text_field" %>
+      </div>
+
+      <div class="field">
+        <p class="_required">役職を選択する</p><br />
+        <div class="form-list">
+          <%= f.collection_select(:work_id, Work.all, :id, :name, {}, {class:"text_field", id:"work-list"}) %>
+        </div>
+      </div>
+
+      <div class="field">
+        <p class="_any">プロフィールを書く</p><br />
+        <%= f.text_area :profile_text, class: "text_field _profile" %>
+      </div>
+
+      <div class="field">
+        <p class="_any">プロフィール画像</p> <i>(変更しない場合は空白のままにしてください)</i><br />
+        <%= f.file_field :profile_image, id:"profile-image" %>
+      </div>
+
+      <div class="btn actions">
+        <%= f.submit "Update" %>
+      </div>
+    <% end %>
+
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+    <%= link_to "Back", :back %>
+  </div>
+</main>
+<%= render "shared/footer"%>
