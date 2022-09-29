@@ -1,10 +1,10 @@
 .login{
   background: no-repeat center/cover image-url('login_bg.jpg');
-  min-height: calc(100vh - 170px);
+  min-height: calc(100vh - 164px);
   padding: 40px 0 64px;
   .wrapper{
     // ======= ログイン画面 ========
-    &.login{
+    &._login{
       display: flex;
       justify-content: space-between;
       padding: 0 80px;

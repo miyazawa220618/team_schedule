@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource)
+    if user_signed_in?
+    user_path(current_user.id)
+   else
+    new_user_session_path
+   end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up,
       keys: [:nickname, :work_id, :profile_text, :profile_image])

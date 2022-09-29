@@ -1,1 +1,65 @@
-<h3>マイページ</h3>
+<%= render "shared/header"%>
+<main class="mypage wrapper">
+
+  <div class="profile_box">
+    <div class="profile_img">
+      <%= image_tag @user.profile_image if @user.profile_image.attached? %>
+    </div>
+    <section>
+      <h3><%= @user.nickname %>さん <span id="my_work"><%= @user.work.name %></span></h3>
+      <ul>
+        <li><%= link_to '削除', "#" %></li>
+        <li><%= link_to '編集', "#" %></li>
+      </ul>
+      <p>
+      <% if @user.profile_image.attached? %>
+        <%= @user.profile_text %>
+      <% else %>
+        ...
+      <% end %>
+      </p>
+    </section>
+  </div>
+
+  <p class="profile_txt">連絡先：<%= @user.email %></p>
+
+  <div class="my_state">
+    <ul class="slider">
+      <li>
+        <h4 class="f-en">Today's state</h4>
+        <div class="average"></div>
+        <p class="f-en">100%</p>
+      </li>
+      <li>
+        <h4 class="f-en">Tomorrow's state</h4>
+        <div class="average"></div>
+        <p class="f-en">100%</p>
+      </li>
+      <li>
+        <h4 class="f-en">2days-later's state</h4>
+        <div class="average"></div>
+        <p class="f-en">100%</p>
+      </li>
+      <li>
+        <h4 class="f-en">3days-later's state</h4>
+        <div class="average"></div>
+        <p class="f-en">100%</p>
+      </li>
+      <li>
+        <h4 class="f-en">4days-later's state</h4>
+        <div class="average"></div>
+        <p class="f-en">100%</p>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="links">
+    <li><%= link_to "プロジェクト一覧", "#" %></li>
+    <li><%= link_to "プロジェクト新規作成", "#" %></li>
+    <li><%= link_to "スケジュールカレンダー", "#" %></li>
+    <li><%= link_to "スケジュール新規作成", "#" %></li>
+  </ul>
+
+  <%= link_to "ユーザー一覧はこちら", users_path, class: "other_users" %>
+</main>
+<%= render "shared/footer"%>

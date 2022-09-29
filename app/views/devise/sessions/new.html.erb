@@ -1,7 +1,7 @@
 <%= render "shared/header"%>
 
 <main class="login">
-  <div class="wrapper login">
+  <div class="wrapper _login">
 
     <aside class="f-en">
       <h4>have a<br>good day<br>at work. </h4>
@@ -15,6 +15,9 @@
       <h2>ログイン</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+
         <div class="field">
           <p>メールアドレス</p><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text_field" %>

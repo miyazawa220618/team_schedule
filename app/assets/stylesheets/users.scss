@@ -1,3 +1,194 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.mypage{
+  padding: 40px 120px;
+  min-height: calc(100vh - 164px);
+}
+.profile_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .profile_img{
+    width: 140px;
+    height: 140px;
+    border: #333 2px solid;
+    border-radius: 180px;
+    background: no-repeat center/contain image-url('default_profile.png');
+    overflow: hidden;
+    img{
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+    }
+  }
+  section{
+    width: 680px;
+    position: relative;
+    h3{
+      font-size: 2.0rem;
+      font-weight: bold;
+      span{
+        font-size: 80%;
+        padding: 4px;
+        background-color: #dc003e;
+        color: #fff;
+        &._designer{background-color: #f0b801;}
+        &._engineer{background-color: #1379d0;}
+      }
+    }
+    ul{
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 1px solid #aaa;
+      width: 200px;
+      display: flex;
+      li{
+        width: 50%;
+        padding: 4px 0;
+        font-size: 1.4rem;
+        text-align: center;
+        a{color: #888;display: block;}
+        &:first-child{
+          border-right: 1px solid #aaa;
+        }
+      }
+    }
+    p{
+      margin-top: 8px;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      min-height: 64px;
+    }
+  }
+}
+.profile_txt{
+  margin: 12px 0 24px;
+  text-align: left;
+  font-size: 1.4rem;
+}
+.my_state{
+  .slider{
+    li{
+      width: 90%;
+      display: flex;
+      align-items: center;
+      h4{
+        font-size: 2.4rem;
+        font-weight: 600;
+        margin-right: 12px;
+      }
+      .average{
+        width: 400px;
+        height: 32px;
+        margin-right: 12px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        &::after{
+          content: '';
+          width: 100%;
+          height: 100%;
+          background-color: #dc003e;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+      p{
+        color: #dc003e;
+        font-size: 2.4rem;
+        font-weight: 600;
+      }
+    }
+    &._average40{
+      .average{
+        &::after{
+          background-color: #1379d0;
+        }
+      }
+      p{color: #1379d0;}
+    }
+    &._average75{
+      .average{
+        &::after{
+          background-color: #1d945d;
+        }
+      }
+      p{color: #1d945d;}
+    }
+    &._average99{
+      .average{
+        &::after{
+          background-color: #f0b801;
+        }
+      }
+      p{color: #f0b801;}
+    }
+  }
+}
+.links{
+  background-color: #eaefea;
+  border-radius: 16px;
+  padding: 48px 40px;
+  margin: 60px 0 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  li{
+    display: inline-block;
+    a{
+      background-image: linear-gradient(to bottom, #1d945d, #1d945d);
+      background-repeat: no-repeat;
+      background-size: 100% 2px;
+      background-position: bottom;
+      display: inline-block;
+      padding: 12px 8px 12px 24px;
+      color: #000;
+      font-size: 1.4rem;
+      font-weight: bold;
+      line-height: 1;
+      text-align: center;
+      position: relative;
+      transition: 0.3s;
+      &::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 6px;
+        transform: translateY(-50%);
+        width: 0;
+        border-top: 6px solid transparent;
+        border-left: 7px solid #1d945d;
+        border-bottom: 6px solid transparent;
+      }
+      &:hover{
+        background-size: 100% 100%;
+        color: #fff;
+        &::after{
+          border-left: 7px solid #fff;
+        }
+      }
+    }
+  }
+}
+.other_users{
+  background-image: linear-gradient(to right, #1d945d, #1d945d);
+  background-repeat: no-repeat;
+  background-size: 0;
+  display: block;
+  width: 64%;
+  max-width: 280px;
+  padding: 8px;
+  border: 2px solid #1d945d;
+  border-radius: 8px;
+  margin: 24px auto 40px;
+  color: #1d945d;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.3s;
+  &:hover{
+    background-size: 100%;
+    color: #fff;
+  }
+}
