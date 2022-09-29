@@ -2,7 +2,7 @@
   <h2><%= link_to image_tag("team_schedule_logo.png") , "/", class:"header_logo" %></h2>
   <nav>
   <% if user_signed_in? %>
-    <%= link_to "プロジェクト", "/dummy/", class: "header_list", id: "nav01" %>
+    <%= link_to "プロジェクト", projects_path, class: "header_list", id: "nav01" %>
     <%= link_to "カレンダー", "/dummy/", class: "header_list", id: "nav02" %>
     <%= link_to "マイページ", user_path(current_user.id), class: "header_list", id: "nav03" %>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_list _logout" %>
