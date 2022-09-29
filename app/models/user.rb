@@ -14,7 +14,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname, uniqueness: { case_sensitive: true }
     validates :work_id,  numericality: {other_than: 1 , message: "can't be blank"}
-    validates :password, format: { with: VALID_PASS_REGEX }
   end
+  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}
   validates :profile_text, {length: {maximum: 800}}
 end
