@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, only: [:index, :show]
 
   def index
   end
