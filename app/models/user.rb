@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+  has_many :project_users
+  has_many :projects, through: :project_users
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :work
