@@ -1,202 +1,84 @@
 <%= render "shared/header"%>
 <main class="_project">
-  <h2 class="f-en">PROJECTS</h2>
+  <div class="ttl">
+    <h2 class="f-en">PROJECTS</h2>
+    <%= link_to "プロジェクト作成", new_project_path, class: "link_new" %>
+  </div>
   <div class="project_all">
     <section class="project_box _after">
-      <h4>今後の予定<span>2</span></h4>
+      <h4>今後の予定<span><%= @project_after.count %></span></h4>
       <ul>
+      <% @project_after.each do |project| %>
         <li class="member_wanted">
-        <%= link_to "#" do %>
-          <h5>プロジェクト1</h5>
-          <p>2022-10-10 〜 2020-11-01</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
+          <%= link_to project_path(project.id) do %>
+            <h5><%= project.name %></h5>
+            <p><%= project.project_start %> 〜 <%= project.project_end %></p>
+            <div class="project_member">
+            <% if project.users.count < 7 %>
+              <% project.users.each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+            <% elsif project.users.count >= 7 %>
+              <% project.users.first(6).each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+              <p>and<br>more.</p>
+            <% end %>
+            </div>
+            <% end %>
         </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト2</h5>
-          <p>2022-10-10 〜 2020-11-01</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
+      <% end %>
       </ul>
     </section>
     <section class="project_box _now">
-      <h4>進行中<span>6</span></h4>
+      <h4>進行中<span><%= @project_now.count %></span></h4>
       <ul>
-        <li>
-        <%= link_to "#" do %>
-          <h5>IY様：9月キャッシュバックappCP</h5>
-          <p>2022-09-10 〜 2020-10-01</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
+      <% @project_now.each do |project| %>
+        <li class="member_wanted">
+          <%= link_to project_path(project.id) do %>
+            <h5><%= project.name %></h5>
+            <p><%= project.project_start %> 〜 <%= project.project_end %></p>
+            <div class="project_member">
+            <% if project.users.count < 7 %>
+              <% project.users.each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+            <% elsif project.users.count >= 7 %>
+              <% project.users.first(6).each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+              <p>and<br>more.</p>
+            <% end %>
+            </div>
+            <% end %>
         </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト12</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト13</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト14</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト15</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト16</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト17</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト18</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト19</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト20</h5>
-          <p>2022-09-20 〜 2020-10-11</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
+      <% end %>
       </ul>
     </section>
     <section class="project_box _before">
-      <h4>FIX<span>10</span></h4>
+      <h4>FIX<span><%= @project_before.count %></span></h4>
       <ul>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト111</h5>
-          <p>2022-09-08 〜 2020-09-21</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
+      <% @project_before.each do |project| %>
+        <li class="member_wanted">
+          <%= link_to project_path(project.id) do %>
+            <h5><%= project.name %></h5>
+            <p><%= project.project_start %> 〜 <%= project.project_end %></p>
+            <div class="project_member">
+            <% if project.users.count < 7 %>
+              <% project.users.each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+            <% elsif project.users.count >= 7 %>
+              <% project.users.first(6).each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+              <p>and<br>more.</p>
+            <% end %>
+            </div>
+            
+            <% end %>
         </li>
-        <li>
-        <%= link_to "#" do %>
-          <h5>プロジェクト112</h5>
-          <p>2022-09-01 〜 2020-09-18</p>
-          <div class="project_member">
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-            <%= image_tag "default_profile.png" %>
-          </div>
-          <% end %>
-        </li>
+      <% end %>
       </ul>
     </section>
   </div>

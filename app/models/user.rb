@@ -17,6 +17,12 @@ class User < ApplicationRecord
     validates :nickname, uniqueness: { case_sensitive: true }
     validates :work_id,  numericality: {other_than: 1 , message: "can't be blank"}
   end
-  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}
+
+  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}, unless: :project?
   validates :profile_text, {length: {maximum: 800}}
+
+  def project?
+    validation_context == :project
+  end
+
 end

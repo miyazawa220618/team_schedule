@@ -14,9 +14,10 @@
     background: no-repeat center/contain image-url('default_profile.png');
     overflow: hidden;
     img{
+      background-color: #fff;
       width: 140px;
       height: 140px;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
   section{

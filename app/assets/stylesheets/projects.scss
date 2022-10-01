@@ -3,27 +3,57 @@
   padding: 0;
   width: 100%;
   min-height: calc(100vh - 164px);
-  h2{
+  &._form{
+    padding: 40px 0;
+  }
+  .ttl{
     background-color: #ffffff;
     padding: 28px 0 16px;
-    font-size: 4.8rem;
-    font-weight: 700;
-    font-style: italic;
-    letter-spacing: -0.1rem;
-    text-align: center;
-    line-height: 1;
-    color: #000;
     position: relative;
-    &::after{
-      content: '';
-      background: rgb(255,199,19);
-      background: rgba(29, 148, 92, 0.3);
+    h2{
+      font-size: 4.8rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -0.1rem;
+      text-align: center;
+      line-height: 1;
+      color: #000;
+      position: relative;
+      &::after{
+        content: '';
+        background: rgb(255,199,19);
+        background: rgba(29, 148, 92, 0.3);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 20px;
+        width: 300px;
+      }
+    }
+    .link_new{
       position: absolute;
       top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 20px;
-      width: 300px;
+      right: 24px;
+      transform: translateY(-50%);
+      background-image: linear-gradient(to right, #1d945d, #1d945d);
+      background-repeat: no-repeat;
+      background-size: 0;
+      display: block;
+      width: 200px;
+      padding: 12px 0;
+      text-align: center;
+      border: 2px solid #1d945d;
+      border-radius: 30px;
+      color: #1d945d;
+      font-size: 1.6rem;
+      font-weight: bold;
+      line-height: 1;
+      transition: 0.3s;
+      &:hover{
+        background-size: 100%;
+        color: #fff;
+      }
     }
   }
 }
@@ -94,15 +124,43 @@
           }
           .project_member{
             display: flex;
-            overflow: hidden;
-            img{
-              width: 32px;
-              height: 32px;
-              border-radius: 32px;
-              object-fit: cover;
-              display: block;
-              margin-right: 4px;
+            ._image{
+              background: no-repeat center/contain image-url('default_profile.png');
+              width: 34px;
+              height: 34px;
+              border-radius: 20px;
               border: 1px solid #bebebe;
+              margin-right: 3px;
+              position: relative;
+              img{
+                background-color: #fff;
+                width: 32px;
+                height: 32px;
+                border-radius: 20px;
+                object-fit: cover;
+              }
+              span{
+                display: none;
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                padding: 0 4px;
+                border: 1px solid #aaa;
+                background-color: #fff;
+                color: #888;
+                white-space: nowrap
+              }
+              &:hover{
+                span{
+                  display: block;
+                }
+              }
+            }
+            p{
+              color: #888;
+              line-height: 1.0;
+              font-size: 1.0rem;
+              padding-top: 6px;
             }
           }
         }
@@ -125,6 +183,145 @@
     }
     &._before{
       border-top: 8px solid #1379d0;
+    }
+  }
+}
+
+.project_form{
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto;
+  h3{
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  .flag_box{
+    position: relative;
+  }
+  #flag_field {
+    position: relative;
+    width: 78px;
+    height: 48px;
+    margin: 8px 0;
+    cursor: pointer;
+    z-index: 0;
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 85%;
+      height: 25%;
+      border-radius: 20px;
+      display: block;
+      background: #e9e9eb;
+      box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.2) inset;
+      -webkit-transition: 0.2s ease-in-out;
+      transition: 0.2s ease-in-out;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 0px;
+      width: 42px;
+      height: 42px;
+      display: block;
+      border-radius: 50px;
+      background: #fff;
+      box-shadow: 0 3px 12px -4px rgba(0, 0, 0, 0.3);
+      -webkit-transition: 0.2s ease-out;
+      transition: 0.2s ease-out;
+    }
+    &._checked{
+      &::before{
+        background-color: #00c66a;
+      }
+      &::after{
+        left: 36px;
+      }
+    }
+  }
+  input[name="project[member_flag]"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    width: 78px;
+    height: 48px;
+  }
+}
+.checks_field{
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 120px;
+  overflow-y: scroll;
+  li{
+    width: 148px;
+    margin-right: 14px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    &:nth-child(4n){
+      margin-right: 0;
+    }
+    label{
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      input{
+        margin: 0;
+        width: 0;
+        opacity: 0;
+        }
+      input:checked + .check_square{
+        border: 2px solid #fff;
+        &::before{
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 44%;
+          height: 3px;
+          border-radius: 2px;
+          transform: translate(-2px, 1px) rotateZ(-135deg);
+          transform-origin: 2px 2px;
+          background: #00c66a;
+        }
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 80%;
+          height: 3px;
+          border-radius: 2px;
+          transform: translate(-1px, 2px) rotateZ(-45deg);
+          transform-origin: 2px 2px;
+          background: #00c66a;
+        }
+      }
+      .check_square{
+        position: relative;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #555;
+        border-radius: 4px;
+        margin-right: 4px;
+      }
+      .check_text{
+        font-size: 1.5rem;
+      }
     }
   }
 }

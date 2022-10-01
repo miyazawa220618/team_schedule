@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show]
-  resources :projects, only: [:index]
+  resources :projects, only: [:index, :new, :create]
 end
