@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  has_many_attached :file
+  has_many_attached :files
   has_many :project_users, dependent: :destroy
   has_many :users, through: :project_users
 

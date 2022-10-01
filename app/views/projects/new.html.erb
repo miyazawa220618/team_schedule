@@ -16,9 +16,23 @@
         <%= f.text_area :about, class: "text_field _about", maxlength: 800, size: "20x6" %>
       </div>
 
-      <div class="field">
+      <div class="field file_upload">
         <p class="_any">添付ファイル</p><br />
-        <%= f.file_field :file, id:"project_files" %>
+        <div class="file_btn">
+          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+        </div>
       </div>
 
       <div class="field">
