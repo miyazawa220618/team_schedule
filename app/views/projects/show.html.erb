@@ -1,0 +1,72 @@
+<%= render "shared/header"%>
+
+<main class="_project">
+  <div class="ttl">
+    <h3><%= @project.name %></h3>
+    <ul class="edit_links">
+      <li><%= link_to "削除", "#" %></li>
+      <li><%= link_to "編集", "#" %></li>
+    </ul>
+  </div>
+  <section class="wrapper _project_about">
+    <div class="project_date">
+      <p><span>開始日</span><%= @project.project_start %></p>
+      <p><span>FIX予定日</span><%= @project.project_end %></p>
+      <div class="project_author">
+        <p>最終更新日：<%= @project.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
+        <% @project.users.last(1).each do |member| %>
+          <p>作成者：<%= member.nickname %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="project_about">
+      <p><%= safe_join(@project.about.split("\n"),tag(:br)) %><p>
+    </div>
+    <ul class="project_file">
+    <% @project.files.each do |file| %>
+      <% if file.representable? %>
+      <li>
+        <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+          <%= image_tag file.representation(resize_to_limit: [400, 200]) %>
+        <% end %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+      </li>
+      <% end %>
+    <% end %>
+    </ul>
+    <dl class="project_member">
+      <dt><span>プロジェクトメンバー</span></dt>
+      <% @project.users.each do |member| %>
+      <dd>
+        <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %></div>
+        <%= link_to member.nickname, user_path(member.id) %>
+      </dd>
+      <% end %>
+    </dl>
+
+    <section class="comment_box">
+      <h3>コメント欄</h3>
+      <div class="comment_form">
+        <input type="textarea" name="" value="">
+        <div class="comment_submit">コメントする</div>
+      </div>
+      <ul class="comment_list">
+        <li>
+          <div class="comment_user">
+            <p>from: ユーザー名<span>2022-10-03</span></p>
+          </div>
+          <p class="comment_text">コメント・ご意見が入ります。</p>
+          <ul class="comment_edit">
+            <li><%= link_to "編集", "#" %></li>
+            <li><%= link_to "削除", "#" %></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </section>
+</main>
+
+<%= render "shared/footer"%>

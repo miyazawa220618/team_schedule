@@ -1,6 +1,9 @@
+// -----------------------------------------
+// プロジェクト共通...
+// -----------------------------------------
 ._project{
   background-color: rgba(29, 148, 92, 0.8);
-  padding: 0;
+  padding: 0 0 24px;
   width: 100%;
   min-height: calc(100vh - 164px);
   &._form{
@@ -31,6 +34,14 @@
         width: 300px;
       }
     }
+    h3{
+      font-size: 3.2rem;
+      font-weight: bold;
+      font-style: italic;
+      text-align: center;
+      line-height: 1;
+      padding-bottom: 4px;
+    }
     .link_new{
       position: absolute;
       top: 50%;
@@ -55,8 +66,41 @@
         color: #fff;
       }
     }
+    .edit_links{
+      position: absolute;
+      top: 50%;
+      right: 24px;
+      transform: translateY(-50%);
+      width: 60%;
+      max-width: 280px;
+      display: flex;
+      justify-content: space-between;
+      li{
+        width: 49%;
+        a{
+          display: block;
+          background-image: linear-gradient(to right, #aaa, #aaa);
+          background-repeat: no-repeat;
+          background-size: 0;
+          padding: 4px;
+          border: 2px solid #aaa;
+          border-radius: 20px;
+          color: #555;
+          font-size: 1.4rem;
+          text-align: center;
+          transition: 0.3s;
+          &:hover{
+            background-size: 100%;
+            color: #fff;
+          }
+        }
+      }
+    }
   }
 }
+// -----------------------------------------
+// 一覧画面
+// -----------------------------------------
 .project_all{
   display: flex;
   width: 94%;
@@ -71,8 +115,22 @@
     border-radius: 8px;
     max-height: calc(100vh - 150px);
     overflow-y: scroll;
+    position: relative;
     &:last-child{
       margin-right: 0;
+    }
+    .member_flag{
+      position: absolute;
+      bottom: 22px;
+      right: 22px;
+      background-color: #dc003e;
+      display: inline-block;
+      border-radius: 6px;
+      padding: 4px 5px;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
+      line-height: 1;
     }
     h4{
       color: #000;
@@ -187,6 +245,9 @@
   }
 }
 
+// -----------------------------------------
+// 新規作成画面（フォーム）
+// -----------------------------------------
 .project_form{
   background-color: #fff;
   border-radius: 16px;
@@ -324,6 +385,199 @@
       }
       .check_text{
         font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// -----------------------------------------
+// 詳細画面
+// -----------------------------------------
+._project_about{
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 16px 80px;
+  margin-top: 16px;
+  .project_date{
+    position: relative;
+    p{
+      font-size: 1.8rem;
+      margin: 8px 0;
+      span{
+        display: inline-block;
+        background-color: #dc003e;
+        border-radius: 4px;
+        padding: 2px 4px;
+        width: 100px;
+        color: #fff;
+        font-size: 80%;
+        font-weight: bold;
+        text-align: center;
+        margin-right: 8px;
+      }
+      &:nth-child(2){
+        span{
+          background-color: #1379d0;
+        }
+      }
+    }
+    .project_author{
+      position: absolute;
+      top: 4px;
+      right: 8px;
+      color: #888;
+      p{
+        font-size: 1.3rem;
+        line-height: 1.6;
+        margin: 0;
+        text-align: right;
+      }
+    }
+  }
+  .project_about{
+    background-color: #eaefea;
+    border-radius: 8px;
+    // border-top: 1px solid #ccc;
+    // border-bottom: 1px solid #ccc;
+    padding: 12px 8px;
+    margin: 16px 0;
+    p{
+      font-size: 1.5rem;
+    }
+  }
+  .project_file{
+    display: flex;
+    overflow-x: scroll;
+    li{
+      margin-right: 12px;
+      max-width: 400px;
+    }
+  }
+  .project_member{
+    dt{
+      background-image: linear-gradient(to bottom, #ddd, #ddd);
+      background-repeat: no-repeat;
+      background-size: 100% 2px;
+      background-position: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      max-height: 180px;
+      overflow-y: scroll;
+      span{
+        background-color: #fff;
+        padding: 0 8px 0 0;
+      }
+    }
+    dd{
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+      ._image{
+        background: no-repeat center/contain image-url('default_profile.png');
+        width: 32px;
+        height: 32px;
+        border-radius: 20px;
+        border: 1px solid #bebebe;
+        margin-right: 6px;
+        position: relative;
+        img{
+          background-color: #fff;
+          width: 30px;
+          height: 30px;
+          border-radius: 20px;
+          object-fit: cover;
+        }
+      }
+      a{
+        color: #555;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .comment_box{
+    margin-top: 28px;
+    padding-top: 12px;
+    border-top: 4px solid #1d945d;
+    h3{
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .comment_form{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 4px 0;
+      input{
+        background-color: #f2f5f4;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(100,100,100,0.2) inset;
+        padding: 8px;
+        width: 86%;
+        height: 64px;
+        font-size: 1.5rem;
+      }
+      .comment_submit{
+        width: 13%;
+        background-color: #1d945d;
+        border-radius: 8px;
+        padding: 8px 0;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+    .comment_list{
+      margin: 20px 0 12px;
+      li{
+        background-color: #eaf3ef;
+        padding: 10px;
+        position: relative;
+        .comment_user{
+          display: flex;
+          align-items: center;
+          p{
+            font-size: 1.3rem;
+            span{
+              margin-left: 8px;
+              display: inline-block;
+              font-size: 1.2rem;
+              color: #777;
+            }
+          }
+        }
+        .comment_text{
+          font-size: 1.5rem;
+          margin-top: 4px;
+        }
+        .comment_edit{
+          display: none;
+          width: 80px;
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          li{
+            background-color: #888;
+            border: 1px solid #888;
+            border-radius: 4px;
+            padding: 0;
+            margin-bottom: 5px;
+            a{
+              display: block;
+              text-align: center;
+              padding: 4px;
+              font-size: 1.3rem;
+              line-height: 1;
+              color: #fff;
+            }
+          }
+        }
+        &:hover{
+          .comment_edit{
+            display: block;
+          }
+        }
       }
     }
   }

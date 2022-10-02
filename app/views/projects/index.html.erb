@@ -9,8 +9,11 @@
       <h4>今後の予定<span><%= @project_after.count %></span></h4>
       <ul>
       <% @project_after.each do |project| %>
-        <li class="member_wanted">
+        <li class="">
           <%= link_to project_path(project.id) do %>
+            <% if project.member_flag == 1 %>
+              <div class="member_flag">メンバー募集中</div>
+            <% end %>
             <h5><%= project.name %></h5>
             <p><%= project.project_start %> 〜 <%= project.project_end %></p>
             <div class="project_member">
@@ -34,8 +37,11 @@
       <h4>進行中<span><%= @project_now.count %></span></h4>
       <ul>
       <% @project_now.each do |project| %>
-        <li class="member_wanted">
+        <li class="">
           <%= link_to project_path(project.id) do %>
+            <% if project.member_flag == 1 %>
+              <div class="member_flag">メンバー募集中</div>
+            <% end %>
             <h5><%= project.name %></h5>
             <p><%= project.project_start %> 〜 <%= project.project_end %></p>
             <div class="project_member">
@@ -59,8 +65,11 @@
       <h4>FIX<span><%= @project_before.count %></span></h4>
       <ul>
       <% @project_before.each do |project| %>
-        <li class="member_wanted">
+        <li class="">
           <%= link_to project_path(project.id) do %>
+            <% if project.member_flag == 1 %>
+              <div class="member_flag">メンバー募集中</div>
+            <% end %>
             <h5><%= project.name %></h5>
             <p><%= project.project_start %> 〜 <%= project.project_end %></p>
             <div class="project_member">
