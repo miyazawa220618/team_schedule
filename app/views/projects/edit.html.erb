@@ -1,7 +1,8 @@
 <%= render "shared/header"%>
+
 <main class="_project _form">
   <div class="project_form">
-    <h3>プロジェクト新規作成</h3>
+    <h3>プロジェクト編集</h3>
     <%= form_with model: @project, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
@@ -17,21 +18,47 @@
       </div>
 
       <div class="field file_upload">
-        <p class="_any">添付ファイル</p><br />
+        <p class="_any">添付ファイル<br /></p><br />
+        <p class="_note">※変更・追加される際は、前回登録したデータが消えてしまいますので、必要なデータは再度ご登録をお願いいたします。</p>
         <div class="file_btn">
-          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+          <% if @project.files[0].present? %>
+          <p>元データ：<%= @project.files[0].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
         </div>
         <div class="file_btn">
-          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+          <% if @project.files[1].present? %>
+          <p>元データ：<%= @project.files[1].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
         </div>
         <div class="file_btn">
-          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+          <% if @project.files[2].present? %>
+          <p>元データ：<%= @project.files[2].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
         </div>
         <div class="file_btn">
-          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+          <% if @project.files[3].present? %>
+          <p>元データ：<%= @project.files[3].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
         </div>
         <div class="file_btn">
-          <%= f.file_field :file, id:"project_files", name: "project[files][]", data: {index: 0} %>
+          <% if @project.files[4].present? %>
+          <p>元データ：<%= @project.files[4].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
         </div>
       </div>
 
@@ -67,4 +94,5 @@
     <% end %>
   </div>
 </main>
-<%= render "shared/footer"%>
+
+<%= render "shared/footer" %>

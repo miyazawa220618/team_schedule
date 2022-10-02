@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :move_to_index
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
     projects = Project.all
@@ -28,7 +29,25 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    @project.files.attach(params[:files]) if @project.files.blank?
+
+    @project.attributes = project_params
+    if @project.save(context: :project)
+      redirect_to project_path(params[:id])
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @project.destroy
+    redirect_to projects_path
   end
 
   private
@@ -40,5 +59,9 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :about, :project_start, :project_end, {files: []}, {user_ids: []}, :member_flag)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end

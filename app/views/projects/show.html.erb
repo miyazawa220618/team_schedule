@@ -4,8 +4,8 @@
   <div class="ttl">
     <h3><%= @project.name %></h3>
     <ul class="edit_links">
-      <li><%= link_to "削除", "#" %></li>
-      <li><%= link_to "編集", "#" %></li>
+      <li><%= link_to "削除", project_path(@project.id), method: :delete %></li>
+      <li><%= link_to "編集", edit_project_path(@project.id) %></li>
     </ul>
   </div>
   <section class="wrapper _project_about">
