@@ -46,6 +46,7 @@ $sp: 639px;
 
 
 // display
+.hidden{opacity: 0;height: 0;}
 .block{display: block;}
 .inline{display: inline;}
 .ib{display: inline-block;}
@@ -174,7 +175,7 @@ footer{
 // -----------------------------------------------
 // error
 // -----------------------------------------------
-#error_explanation{
+#error_explanation,.error-alert{
   width: 100;
   margin: 0 auto;
   h2{

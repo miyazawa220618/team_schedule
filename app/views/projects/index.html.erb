@@ -1,0 +1,96 @@
+<%= render "shared/header"%>
+<main class="_project">
+  <div class="ttl">
+    <h2 class="f-en">PROJECTS</h2>
+    <%= link_to "プロジェクト作成", new_project_path, class: "link_new" %>
+  </div>
+  <div class="project_all">
+    <section class="project_box _after">
+      <h4>今後の予定<span><%= @project_after.count %></span></h4>
+      <ul>
+      <% @project_after.each do |project| %>
+        <li class="">
+          <%= link_to project_path(project.id) do %>
+            <% if project.member_flag == 1 %>
+              <div class="member_flag">メンバー募集中</div>
+            <% end %>
+            <h5><%= project.name %></h5>
+            <p><%= project.project_start %> 〜 <%= project.project_end %></p>
+            <div class="project_member">
+            <% if project.users.count < 7 %>
+              <% project.users.each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+            <% elsif project.users.count >= 7 %>
+              <% project.users.first(6).each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+              <p>and<br>more.</p>
+            <% end %>
+            </div>
+            <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
+    <section class="project_box _now">
+      <h4>進行中<span><%= @project_now.count %></span></h4>
+      <ul>
+      <% @project_now.each do |project| %>
+        <li class="">
+          <%= link_to project_path(project.id) do %>
+            <% if project.member_flag == 1 %>
+              <div class="member_flag">メンバー募集中</div>
+            <% end %>
+            <h5><%= project.name %></h5>
+            <p><%= project.project_start %> 〜 <%= project.project_end %></p>
+            <div class="project_member">
+            <% if project.users.count < 7 %>
+              <% project.users.each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+            <% elsif project.users.count >= 7 %>
+              <% project.users.first(6).each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+              <p>and<br>more.</p>
+            <% end %>
+            </div>
+            <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
+    <section class="project_box _before">
+      <h4>FIX<span><%= @project_before.count %></span></h4>
+      <ul>
+      <% @project_before.each do |project| %>
+        <li class="">
+          <%= link_to project_path(project.id) do %>
+            <% if project.member_flag == 1 %>
+              <div class="member_flag">メンバー募集中</div>
+            <% end %>
+            <h5><%= project.name %></h5>
+            <p><%= project.project_start %> 〜 <%= project.project_end %></p>
+            <div class="project_member">
+            <% if project.users.count < 7 %>
+              <% project.users.each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+            <% elsif project.users.count >= 7 %>
+              <% project.users.first(6).each do |member| %>
+              <div class="_image"><%= image_tag member.profile_image if member.profile_image.attached? %><span><%= member.nickname %></span></div>
+              <% end %>
+              <p>and<br>more.</p>
+            <% end %>
+            </div>
+            
+            <% end %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
+  </div>
+
+</main>
+<%= render "shared/footer"%>

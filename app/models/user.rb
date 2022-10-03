@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+  has_many :project_users
+  has_many :projects, through: :project_users
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :work
@@ -15,6 +17,12 @@ class User < ApplicationRecord
     validates :nickname, uniqueness: { case_sensitive: true }
     validates :work_id,  numericality: {other_than: 1 , message: "can't be blank"}
   end
-  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}
+
+  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}, unless: :project?
   validates :profile_text, {length: {maximum: 800}}
+
+  def project?
+    validation_context == :project
+  end
+
 end

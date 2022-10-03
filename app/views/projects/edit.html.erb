@@ -1,0 +1,98 @@
+<%= render "shared/header"%>
+
+<main class="_project _form">
+  <div class="project_form">
+    <h3>プロジェクト編集</h3>
+    <%= form_with model: @project, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="field">
+        <p class="_required">プロジェクト名</p><br />
+        <%= f.text_field :name, autofocus: true, class: "text_field" %>
+      </div>
+
+      <div class="field">
+        <p class="_any">プロジェクト内容</p><br />
+        <%= f.text_area :about, class: "text_field _about", maxlength: 800, size: "20x6" %>
+      </div>
+
+      <div class="field file_upload">
+        <p class="_any">添付ファイル<br /></p><br />
+        <p class="_note">※変更・追加される際は、前回登録したデータが消えてしまいますので、必要なデータは再度ご登録をお願いいたします。</p>
+        <div class="file_btn">
+          <% if @project.files[0].present? %>
+          <p>元データ：<%= @project.files[0].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
+        </div>
+        <div class="file_btn">
+          <% if @project.files[1].present? %>
+          <p>元データ：<%= @project.files[1].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
+        </div>
+        <div class="file_btn">
+          <% if @project.files[2].present? %>
+          <p>元データ：<%= @project.files[2].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
+        </div>
+        <div class="file_btn">
+          <% if @project.files[3].present? %>
+          <p>元データ：<%= @project.files[3].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
+        </div>
+        <div class="file_btn">
+          <% if @project.files[4].present? %>
+          <p>元データ：<%= @project.files[4].filename %></p>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% else %>
+          <%= f.file_field :file, id:"project_files", name: "project[files][]" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <p class="_required">プロジェクト開始日</p><br />
+        <%= f.date_field :project_start, id: "project_start" %>
+      </div>
+
+      <div class="field">
+        <p class="_required">プロジェクトFIX予定日</p><br />
+        <%= f.date_field :project_end, id: "project_end" %>
+      </div>
+
+      <div class="field">
+        <p class="_any">メンバーを選択</p><br />
+        <div id="check_member">
+        <%= f.collection_check_boxes :user_ids, User.where.not(id: current_user.id), :id, :nickname, {include_hidden: false} %>
+        </div>
+        <input type="hidden" name="project[user_ids][]" value=<%= current_user.id %>>
+      </div>
+
+      <div class="field">
+        <p class="_any">メンバー募集フラグ</p><br />
+        <div class="flag_box">
+          <div id="flag_field"></div>
+          <%= f.check_box :member_flag %>
+        </div>
+      </div>
+
+      <div class="btn1 actions">
+        <%= f.submit "上記の内容で作成する" %>
+      </div>
+    <% end %>
+  </div>
+</main>
+
+<%= render "shared/footer" %>

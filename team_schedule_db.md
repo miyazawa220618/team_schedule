@@ -34,7 +34,7 @@
 - has_many :users, through: :project_users
 - has_many :comments
 - has_many :schedules
-- has_many_attached :file
+- has_many_attached :files
 
 ## project_userテーブル（中間テーブル）
 
