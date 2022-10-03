@@ -2,6 +2,7 @@
 
 <main class="_project">
   <div class="ttl">
+    <%= link_to "戻る", projects_path, class: "return_link" %>
     <h3><%= @project.name %></h3>
     <ul class="edit_links">
       <li><%= link_to "削除", project_path(@project.id), method: :delete %></li>
