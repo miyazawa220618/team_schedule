@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :move_to_index
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_show, only: [:edit, :update, :destroy]
 
   def index
     projects = Project.all
@@ -51,17 +52,16 @@ class ProjectsController < ApplicationController
   end
 
   private
-  def move_to_index
-    unless user_signed_in?
-      redirect_to root_path
-    end
-  end
-
   def project_params
     params.require(:project).permit(:name, :about, :project_start, :project_end, {files: []}, {user_ids: []}, :member_flag)
   end
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def move_to_show
+      last_user = (@project.users.length) - 1
+      redirect_to action: :show unless (user_signed_in? && current_user.id == @project.users.ids[last_user])
   end
 end
