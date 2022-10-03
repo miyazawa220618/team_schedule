@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :project_users, dependent: :destroy
   has_many :users, through: :project_users
 
-  with_options presence: true, if: -> { validation_context == :project } do
+  with_options presence: true, if: -> { validation_context == :project} do
     validates :name
     validates :project_start
     validates :project_end
@@ -13,9 +13,9 @@ class Project < ApplicationRecord
   validate :start_end_check, on: :project
 
   def start_end_check
-    if project_start.present? || project_end.present?
+    if project_start.present? && project_end.present?
       errors.add(:project_end, "must be greater than Project start") unless
-      self.project_start <= self.project_end
+        self.project_start <= self.project_end
     end 
   end
 
