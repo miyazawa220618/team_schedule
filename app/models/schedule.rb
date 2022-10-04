@@ -8,6 +8,9 @@ class Schedule < ApplicationRecord
     validates :work_id,  numericality: {other_than: 1 , message: "can't be blank"}
   end
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :work
+
   validate :start_end_check
 
   def start_end_check

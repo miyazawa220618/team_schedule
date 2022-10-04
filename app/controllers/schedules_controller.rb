@@ -10,7 +10,7 @@ class SchedulesController < ApplicationController
 
     @holiday = []
     at_day = @today - 36
-    115.times do 
+    105.times do 
       at_day += 1
       if HolidayJapan.check(at_day)
         @holiday.push(at_day)
@@ -265,6 +265,10 @@ class SchedulesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @schedule = Schedule.find(params[:id])
   end
 
   private

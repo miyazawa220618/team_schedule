@@ -13,7 +13,7 @@
       <% mon_schedule.each do |mon| %>
         <% if mon.work_id == 2 %>
         <li class="schedule_border" data-startdate="<%= base_week %>" data-enddate="<%= mon.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(mon.id) do %>
             <%= mon.project.name %> ＞ <%= mon.title %>
           <% end %>
         </li>
@@ -25,7 +25,7 @@
       <% tue_schedule.each do |tue| %>
         <% if tue.work_id == 2 %>
         <li class="schedule_border" data-startdate="<%= base_week+1 %>" data-enddate="<%= tue.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(tue.id) do %>
             <%= tue.project.name %> ＞ <%= tue.title %>
           <% end %>
         </li>
@@ -37,7 +37,7 @@
       <% wed_schedule.each do |wed| %>
         <% if wed.work_id == 2 %>
         <li class="schedule_border" data-startdate="<%= base_week+2 %>" data-enddate="<%= wed.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(wed.id) do %>
             <%= wed.project.name %> ＞ <%= wed.title %>
           <% end %>
         </li>
@@ -49,7 +49,7 @@
       <% thu_schedule.each do |thu| %>
         <% if thu.work_id == 2 %>
         <li class="schedule_border" data-startdate="<%= base_week+3 %>" data-enddate="<%= thu.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(thu.id) do %>
             <%= thu.project.name %> ＞ <%= thu.title %>
           <% end %>
         </li>
@@ -61,7 +61,7 @@
       <% fri_schedule.each do |fri| %>
         <% if fri.work_id == 2 %>
         <li class="schedule_border" data-startdate="<%= base_week+4 %>" data-enddate="<%= fri.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(fri.id) do %>
             <%= fri.project.name %> ＞ <%= fri.title %>
           <% end %>
         </li>
@@ -76,7 +76,7 @@
       <% mon_schedule.each do |mon| %>
         <% if mon.work_id == 3 %>
         <li class="schedule_border" data-startdate="<%= base_week %>" data-enddate="<%= mon.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(mon.id) do %>
             <%= mon.project.name %> ＞ <%= mon.title %>
           <% end %>
         </li>
@@ -88,7 +88,7 @@
       <% tue_schedule.each do |tue| %>
         <% if tue.work_id == 3 %>
         <li class="schedule_border" data-startdate="<%= base_week+1 %>" data-enddate="<%= tue.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(tue.id) do %>
             <%= tue.project.name %> ＞ <%= tue.title %>
           <% end %>
         </li>
@@ -100,7 +100,7 @@
       <% wed_schedule.each do |wed| %>
         <% if wed.work_id == 3 %>
         <li class="schedule_border" data-startdate="<%= base_week+2 %>" data-enddate="<%= wed.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(wed.id) do %>
             <%= wed.project.name %> ＞ <%= wed.title %>
           <% end %>
         </li>
@@ -112,7 +112,7 @@
       <% thu_schedule.each do |thu| %>
         <% if thu.work_id == 3 %>
         <li class="schedule_border" data-startdate="<%= base_week+3 %>" data-enddate="<%= thu.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(thu.id) do %>
             <%= thu.project.name %> ＞ <%= thu.title %>
           <% end %>
         </li>
@@ -124,7 +124,7 @@
       <% fri_schedule.each do |fri| %>
         <% if fri.work_id == 3 %>
         <li class="schedule_border" data-startdate="<%= base_week+4 %>" data-enddate="<%= fri.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(fri.id) do %>
             <%= fri.project.name %> ＞ <%= fri.title %>
           <% end %>
         </li>
@@ -139,7 +139,7 @@
       <% mon_schedule.each do |mon| %>
         <% if mon.work_id == 4 %>
         <li class="schedule_border" data-startdate="<%= base_week %>" data-enddate="<%= mon.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(mon.id) do %>
             <%= mon.project.name %> ＞ <%= mon.title %>
           <% end %>
         </li>
@@ -151,7 +151,7 @@
       <% tue_schedule.each do |tue| %>
         <% if tue.work_id == 4 %>
         <li class="schedule_border" data-startdate="<%= base_week+1 %>" data-enddate="<%= tue.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(tue.id) do %>
             <%= tue.project.name %> ＞ <%= tue.title %>
           <% end %>
         </li>
@@ -163,7 +163,7 @@
       <% wed_schedule.each do |wed| %>
         <% if wed.work_id == 4 %>
         <li class="schedule_border" data-startdate="<%= base_week+2 %>" data-enddate="<%= wed.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(wed.id) do %>
             <%= wed.project.name %> ＞ <%= wed.title %>
           <% end %>
         </li>
@@ -175,7 +175,7 @@
       <% thu_schedule.each do |thu| %>
         <% if thu.work_id == 4 %>
         <li class="schedule_border" data-startdate="<%= base_week+3 %>" data-enddate="<%= thu.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(thu.id) do %>
             <%= thu.project.name %> ＞ <%= thu.title %>
           <% end %>
         </li>
@@ -187,7 +187,7 @@
       <% fri_schedule.each do |fri| %>
         <% if fri.work_id == 4 %>
         <li class="schedule_border" data-startdate="<%= base_week+4 %>" data-enddate="<%= fri.end_date %>">
-          <%= link_to "#" do %>
+          <%= link_to schedule_path(fri.id) do %>
             <%= fri.project.name %> ＞ <%= fri.title %>
           <% end %>
         </li>
