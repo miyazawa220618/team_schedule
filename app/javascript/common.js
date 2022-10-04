@@ -1,11 +1,3 @@
-document.addEventListener('DOMContentLoaded', function(){
-  $('.slider').slick({
-    dots: false,
-    arrows: true,
-    slidesToShow: 1
-  });
-});
-
 const works = () => {
   const myWork = document.getElementById('my_work');
   if (!myWork) return null;
@@ -71,11 +63,18 @@ const memberCheck = () => {
   }
 }
 
-
 window.addEventListener("load", works);
 window.addEventListener("load", links);
 window.addEventListener("load", toggle);
 window.addEventListener("load", memberCheck);
+
+document.addEventListener('DOMContentLoaded', function(){
+  $('.slider').slick({
+    dots: false,
+    arrows: true,
+    slidesToShow: 1
+  });
+});
 
 
 
