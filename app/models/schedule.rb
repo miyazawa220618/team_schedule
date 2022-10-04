@@ -1,11 +1,12 @@
 class Schedule < ApplicationRecord
   belongs_to :project
+  has_many :shares, dependent: :destroy
 
   with_options presence: true do
     validates :title
     validates :start_date
     validates :end_date
-    validates :work_id,  numericality: {other_than: 1 , message: "can't be blank"}
+    validates :work_id, numericality: {other_than: 1 , message: "can't be blank"}
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
