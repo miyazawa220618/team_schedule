@@ -1,0 +1,27 @@
+<%= render "shared/header"%>
+<main class="_schedule">
+  <div class="ttl">
+    <%= link_to "戻る", schedules_path, class: "return_link" %>
+    <h3><span><%= @schedule.project.name %></span><br><%= @schedule.title %></h3>
+    <ul class="edit_links">
+      <li><%= link_to "削除", schedule_path(@schedule.id), method: :delete %></li>
+      <li><%= link_to "編集", edit_schedule_path(@schedule.id) %></li>
+    </ul>
+    <h5 class="edit_time">最終更新日：<%= @schedule.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></h5>
+    <p>
+      <% if @schedule.work_id == 2 %>
+      <span class="_director"><%= @schedule.work.name %></span>
+      <% elsif @schedule.work_id == 3 %>
+      <span class="_designer"><%= @schedule.work.name %></span>
+      <% elsif @schedule.work_id == 4 %>
+      <span class="_engineer"><%= @schedule.work.name %></span>
+      <% end %>
+      <%= @schedule.start_date %> 〜 <%= @schedule.end_date %>
+    </p>
+  </div>
+  <div class="share_form ac">
+  <p><br>シェアのフォームが入ります<br></p>
+  
+  </div>
+</main>
+<%= render "shared/footer"%>

@@ -1,0 +1,198 @@
+<div class="schedule_box">
+  <ul class="date_box f-en">
+    <li><%= base_week.strftime("%-m/%-d(#{@dat_week[base_week.wday]})") %></li>
+    <li><%= (base_week+1).strftime("%-m/%-d(#{@dat_week[(base_week+1).wday]})") %></li>
+    <li><%= (base_week+2).strftime("%-m/%-d(#{@dat_week[(base_week+2).wday]})") %></li>
+    <li><%= (base_week+3).strftime("%-m/%-d(#{@dat_week[(base_week+3).wday]})") %></li>
+    <li><%= (base_week+4).strftime("%-m/%-d(#{@dat_week[(base_week+4).wday]})") %></li>
+  </ul>
+  <!--- ディレクタースケジュール --->
+  <ul class="director_box">
+   <!--- 月曜 --->
+    <% if mon_schedule != nil %>
+      <% mon_schedule.each do |mon| %>
+        <% if mon.work_id == 2 %>
+        <li class="schedule_border" data-startdate="<%= base_week %>" data-enddate="<%= mon.end_date %>">
+          <%= link_to schedule_path(mon.id) do %>
+            <%= mon.project.name %> ＞ <%= mon.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 火曜 --->
+    <% if tue_schedule != nil %>
+      <% tue_schedule.each do |tue| %>
+        <% if tue.work_id == 2 %>
+        <li class="schedule_border" data-startdate="<%= base_week+1 %>" data-enddate="<%= tue.end_date %>">
+          <%= link_to schedule_path(tue.id) do %>
+            <%= tue.project.name %> ＞ <%= tue.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 水曜 --->
+    <% if wed_schedule != nil %>
+      <% wed_schedule.each do |wed| %>
+        <% if wed.work_id == 2 %>
+        <li class="schedule_border" data-startdate="<%= base_week+2 %>" data-enddate="<%= wed.end_date %>">
+          <%= link_to schedule_path(wed.id) do %>
+            <%= wed.project.name %> ＞ <%= wed.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 木曜 --->
+    <% if thu_schedule != nil %>
+      <% thu_schedule.each do |thu| %>
+        <% if thu.work_id == 2 %>
+        <li class="schedule_border" data-startdate="<%= base_week+3 %>" data-enddate="<%= thu.end_date %>">
+          <%= link_to schedule_path(thu.id) do %>
+            <%= thu.project.name %> ＞ <%= thu.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 金曜 --->
+    <% if fri_schedule != nil %>
+      <% fri_schedule.each do |fri| %>
+        <% if fri.work_id == 2 %>
+        <li class="schedule_border" data-startdate="<%= base_week+4 %>" data-enddate="<%= fri.end_date %>">
+          <%= link_to schedule_path(fri.id) do %>
+            <%= fri.project.name %> ＞ <%= fri.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    </ul>
+  <!--- デザイナースケジュール --->
+  <ul class="designer_box">
+   <!--- 月曜 --->
+    <% if mon_schedule != nil %>
+      <% mon_schedule.each do |mon| %>
+        <% if mon.work_id == 3 %>
+        <li class="schedule_border" data-startdate="<%= base_week %>" data-enddate="<%= mon.end_date %>">
+          <%= link_to schedule_path(mon.id) do %>
+            <%= mon.project.name %> ＞ <%= mon.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 火曜 --->
+    <% if tue_schedule != nil %>
+      <% tue_schedule.each do |tue| %>
+        <% if tue.work_id == 3 %>
+        <li class="schedule_border" data-startdate="<%= base_week+1 %>" data-enddate="<%= tue.end_date %>">
+          <%= link_to schedule_path(tue.id) do %>
+            <%= tue.project.name %> ＞ <%= tue.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 水曜 --->
+    <% if wed_schedule != nil %>
+      <% wed_schedule.each do |wed| %>
+        <% if wed.work_id == 3 %>
+        <li class="schedule_border" data-startdate="<%= base_week+2 %>" data-enddate="<%= wed.end_date %>">
+          <%= link_to schedule_path(wed.id) do %>
+            <%= wed.project.name %> ＞ <%= wed.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 木曜 --->
+    <% if thu_schedule != nil %>
+      <% thu_schedule.each do |thu| %>
+        <% if thu.work_id == 3 %>
+        <li class="schedule_border" data-startdate="<%= base_week+3 %>" data-enddate="<%= thu.end_date %>">
+          <%= link_to schedule_path(thu.id) do %>
+            <%= thu.project.name %> ＞ <%= thu.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 金曜 --->
+    <% if fri_schedule != nil %>
+      <% fri_schedule.each do |fri| %>
+        <% if fri.work_id == 3 %>
+        <li class="schedule_border" data-startdate="<%= base_week+4 %>" data-enddate="<%= fri.end_date %>">
+          <%= link_to schedule_path(fri.id) do %>
+            <%= fri.project.name %> ＞ <%= fri.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    </ul>
+    <!--- エンジニアスケジュール --->
+    <ul class="engineer_box">
+    <!--- 月曜 --->
+    <% if mon_schedule != nil %>
+      <% mon_schedule.each do |mon| %>
+        <% if mon.work_id == 4 %>
+        <li class="schedule_border" data-startdate="<%= base_week %>" data-enddate="<%= mon.end_date %>">
+          <%= link_to schedule_path(mon.id) do %>
+            <%= mon.project.name %> ＞ <%= mon.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 火曜 --->
+    <% if tue_schedule != nil %>
+      <% tue_schedule.each do |tue| %>
+        <% if tue.work_id == 4 %>
+        <li class="schedule_border" data-startdate="<%= base_week+1 %>" data-enddate="<%= tue.end_date %>">
+          <%= link_to schedule_path(tue.id) do %>
+            <%= tue.project.name %> ＞ <%= tue.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 水曜 --->
+    <% if wed_schedule != nil %>
+      <% wed_schedule.each do |wed| %>
+        <% if wed.work_id == 4 %>
+        <li class="schedule_border" data-startdate="<%= base_week+2 %>" data-enddate="<%= wed.end_date %>">
+          <%= link_to schedule_path(wed.id) do %>
+            <%= wed.project.name %> ＞ <%= wed.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 木曜 --->
+    <% if thu_schedule != nil %>
+      <% thu_schedule.each do |thu| %>
+        <% if thu.work_id == 4 %>
+        <li class="schedule_border" data-startdate="<%= base_week+3 %>" data-enddate="<%= thu.end_date %>">
+          <%= link_to schedule_path(thu.id) do %>
+            <%= thu.project.name %> ＞ <%= thu.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!--- 金曜 --->
+    <% if fri_schedule != nil %>
+      <% fri_schedule.each do |fri| %>
+        <% if fri.work_id == 4 %>
+        <li class="schedule_border" data-startdate="<%= base_week+4 %>" data-enddate="<%= fri.end_date %>">
+          <%= link_to schedule_path(fri.id) do %>
+            <%= fri.project.name %> ＞ <%= fri.title %>
+          <% end %>
+        </li>
+        <% end %>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>

@@ -1,0 +1,64 @@
+<%= render "shared/header"%>
+
+<main class="_schedule">
+  <div class="ttl">
+    <h2 class="f-en">schedule</h2>
+    <%= link_to '作成する', new_schedule_path, class: "link_new"  %>
+  </div>
+
+  <p id="today" style="display:none;"><%= @today.strftime("%-m/%-d(#{@dat_week[@today.wday]})") %></p>
+  <% @holiday.each do |day| %>
+    <p class="holiday" style="display:none;"><%= day.strftime("%-m/%-d(#{@dat_week[day.wday]})") %></p>
+  <% end %>
+
+    <div class="accordion_btn" id="btn_top"><span>前の週をみる</span></div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week0, mon_schedule: @mon_schedule0, tue_schedule: @tue_schedule0, wed_schedule: @wed_schedule0, thu_schedule: @thu_schedule0, fri_schedule: @fri_schedule0} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week1, mon_schedule: @mon_schedule1, tue_schedule: @tue_schedule1, wed_schedule: @wed_schedule1, thu_schedule: @thu_schedule1, fri_schedule: @fri_schedule1} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week2, mon_schedule: @mon_schedule2, tue_schedule: @tue_schedule2, wed_schedule: @wed_schedule2, thu_schedule: @thu_schedule2, fri_schedule: @fri_schedule2} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week3, mon_schedule: @mon_schedule3, tue_schedule: @tue_schedule3, wed_schedule: @wed_schedule3, thu_schedule: @thu_schedule3, fri_schedule: @fri_schedule3} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week4, mon_schedule: @mon_schedule4, tue_schedule: @tue_schedule4, wed_schedule: @wed_schedule4, thu_schedule: @thu_schedule4, fri_schedule: @fri_schedule4} %>
+    </div>
+    <div class="accordion_list _look">
+      <%= render 'schedule', { base_week: @base_week5, mon_schedule: @mon_schedule5, tue_schedule: @tue_schedule5, wed_schedule: @wed_schedule5, thu_schedule: @thu_schedule5, fri_schedule: @fri_schedule5} %>
+    </div>
+    <div class="accordion_list _look">
+      <%= render 'schedule', { base_week: @base_week6, mon_schedule: @mon_schedule6, tue_schedule: @tue_schedule6, wed_schedule: @wed_schedule6, thu_schedule: @thu_schedule6, fri_schedule: @fri_schedule6} %>
+    </div>
+    <div class="accordion_list _look">
+      <%= render 'schedule', { base_week: @base_week7, mon_schedule: @mon_schedule7, tue_schedule: @tue_schedule7, wed_schedule: @wed_schedule7, thu_schedule: @thu_schedule7, fri_schedule: @fri_schedule7} %>
+    </div>
+    <div class="accordion_list _look">
+      <%= render 'schedule', { base_week: @base_week8, mon_schedule: @mon_schedule8, tue_schedule: @tue_schedule8, wed_schedule: @wed_schedule8, thu_schedule: @thu_schedule8, fri_schedule: @fri_schedule8} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week9, mon_schedule: @mon_schedule9, tue_schedule: @tue_schedule9, wed_schedule: @wed_schedule9, thu_schedule: @thu_schedule9, fri_schedule: @fri_schedule9} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week10, mon_schedule: @mon_schedule10, tue_schedule: @tue_schedule10, wed_schedule: @wed_schedule10, thu_schedule: @thu_schedule10, fri_schedule: @fri_schedule10} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week11, mon_schedule: @mon_schedule11, tue_schedule: @tue_schedule11, wed_schedule: @wed_schedule11, thu_schedule: @thu_schedule11, fri_schedule: @fri_schedule11} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week12, mon_schedule: @mon_schedule12, tue_schedule: @tue_schedule12, wed_schedule: @wed_schedule12, thu_schedule: @thu_schedule12, fri_schedule: @fri_schedule12} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week13, mon_schedule: @mon_schedule13, tue_schedule: @tue_schedule13, wed_schedule: @wed_schedule13, thu_schedule: @thu_schedule13, fri_schedule: @fri_schedule13} %>
+    </div>
+    <div class="accordion_list">
+      <%= render 'schedule', { base_week: @base_week14, mon_schedule: @mon_schedule14, tue_schedule: @tue_schedule14, wed_schedule: @wed_schedule14, thu_schedule: @thu_schedule14, fri_schedule: @fri_schedule14} %>
+    </div>
+    <div class="accordion_btn" id="btn_bottom"><span>次の週をみる</span></div>
+
+</main>
+
+<%= render "shared/footer"%>
