@@ -12,7 +12,7 @@
         <li><%= link_to '編集', "#" %></li>
       </ul>
       <p>
-      <% if @user.profile_image.attached? %>
+      <% if @user.profile_text.present? %>
         <%= @user.profile_text %>
       <% else %>
         ...

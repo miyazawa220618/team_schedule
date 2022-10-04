@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   has_many_attached :files
   has_many :project_users, dependent: :destroy
   has_many :users, through: :project_users
-  has_many :schedules
+  has_many :schedules, dependent: :destroy
 
   with_options presence: true, if: -> { validation_context == :project} do
     validates :name
