@@ -4,10 +4,14 @@
   <div class="ttl">
     <%= link_to "戻る", projects_path, class: "return_link" %>
     <h3><%= @project.name %></h3>
-    <ul class="edit_links">
-      <li><%= link_to "削除", project_path(@project.id), method: :delete %></li>
-      <li><%= link_to "編集", edit_project_path(@project.id) %></li>
-    </ul>
+    <% @project.users.last(1).each do |member| %>
+      <% if current_user.id == member.id %>
+        <ul class="edit_links">
+          <li><%= link_to "削除", project_path(@project.id), method: :delete %></li>
+          <li><%= link_to "編集", edit_project_path(@project.id) %></li>
+        </ul>
+      <% end %>
+    <% end %>
   </div>
   <section class="wrapper _project_about">
     <div class="project_date">
