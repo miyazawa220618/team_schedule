@@ -4,8 +4,8 @@
     <%= link_to "戻る", schedules_path, class: "return_link" %>
     <h3><span><%= @schedule.project.name %></span><br><%= @schedule.title %></h3>
     <ul class="edit_links">
-      <li><%= link_to "削除", "#", method: :delete %></li>
-      <li><%= link_to "編集", "#" %></li>
+      <li><%= link_to "削除", schedule_path(@schedule.id), method: :delete %></li>
+      <li><%= link_to "編集", edit_schedule_path(@schedule.id) %></li>
     </ul>
     <h5 class="edit_time">最終更新日：<%= @schedule.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></h5>
     <p>

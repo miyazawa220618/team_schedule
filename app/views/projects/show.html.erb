@@ -19,6 +19,11 @@
           <p>作成者：<%= member.nickname %></p>
         <% end %>
       </div>
+      <% if @project.project_end >= Date.today %>
+        <%= link_to new_schedule_path, class: "project_schedule" do %>
+          <p>このプロジェクトの<br>詳細スケジュールを設定する</p>
+        <% end %>
+      <% end %>
     </div>
     <div class="project_about">
       <p><%= safe_join(@project.about.split("\n"),tag(:br)) %><p>

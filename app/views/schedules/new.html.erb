@@ -1,46 +1,18 @@
 <%= render "shared/header"%>
 
 <main class="_schedule _form">
+  <%= link_to "戻る", request.referer, class: "return_link" %>
   <div class="schedule_form">
 
   <h3>スケジュール作成</h3>
-  <%= form_with model: @schedule, local: true do |f| %>
-
-  <%= render 'shared/error_messages', model: f.object %>
-
-    <div class="field">
-      <p class="_required">プロジェクトを選択する</p><br />
-      <div class="form-list">
-        <%= f.collection_select :project_id, Project.where("project_end >= ?", Date.today), :id, :name, {prompt: "選択してください"}, {class:"text_field", id:"work-list"} %>
-      </div>
+  <% unless Project.count == 0 %>
+    <%= render "form"%>
+  <% else %>
+    <div class="non_form">
+      <h4>プロジェクトが未作成です</h4>
+      <p>まずはプロジェクトを作成しましょう！</p>
+      <%= link_to "プロジェクト作成", new_project_path %>
     </div>
-
-    <div class="field">
-      <p class="_required">作業タイトル</p><br />
-      <%= f.text_field :title, class: "text_field" %>
-    </div>
-
-    <div class="field">
-      <p class="_required">作業開始日</p><br />
-      <%= f.date_field :start_date, id: "project_start" %>
-    </div>
-
-    <div class="field">
-      <p class="_required">作業締切日</p><br />
-      <%= f.date_field :end_date, id: "project_end" %>
-    </div>
-
-    <div class="field">
-      <p class="_required">作業内容の役職を選択する</p><br />
-      <div class="form-list">
-        <%= f.collection_select(:work_id, Work.all, :id, :name, {}, {class:"text_field", id:"work-list"}) %>
-      </div>
-    </div>
-
-    <div class="btn1 actions">
-       <%= f.submit "上記の内容で作成する" %>
-    </div>
-
   <% end %>
   </div>
 </main>

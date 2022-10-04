@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   def index
     @schedules = Schedule.all
@@ -256,6 +258,10 @@ class SchedulesController < ApplicationController
 
   def new
     @schedule = Schedule.new
+    referer = Rails.application.routes.recognize_path(request.referer)
+    if (referer[:controller] == 'projects') && (referer[:action] == 'show')
+      @id = referer[:id]
+    end
   end
 
   def create
@@ -268,12 +274,31 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @schedule = Schedule.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(params[:id])
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @schedule.destroy
+    redirect_to schedules_path
   end
 
   private
   def schedule_params
     params.require(:schedule).permit(:title, :start_date, :end_date, :work_id, :project_id)
+  end
+
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
   end
 
 end

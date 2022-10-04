@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :projects
-  resources :schedules, only: [:index, :new, :create, :show]
+  resources :schedules
 end

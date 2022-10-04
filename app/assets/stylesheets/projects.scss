@@ -504,6 +504,59 @@
         text-align: right;
       }
     }
+    .project_schedule{
+      position: absolute;
+      top: 4px;
+      left: 240px;
+      display: block;
+      p{
+        background-image: linear-gradient(to right, #1d945d, #1d945d);
+        background-repeat: no-repeat;
+        background-size: 0;
+        border: #1d945d 2px solid;
+        padding: 9px 32px 9px 12px;
+        margin: 0;
+        border-radius: 6px;
+        color: #1d945d;
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 1.3;
+        position: relative;
+        transition: 0.3s;
+        &::after{
+          content: '';
+          background-color: #1d945d;
+          position: absolute;
+          top: 50%;
+          right: 12px;
+          transform: translateY(-50%);
+          width: 2px;
+          height: 8px;
+          transform:rotate(45deg);
+        }
+        &::before{
+          content: '';
+          background-color: #1d945d;
+          position: absolute;
+          top: 40%;
+          right: 12px;
+          transform: translateY(-50%);
+          width: 2px;
+          height: 8px;
+          transform:rotate(-45deg);
+        }
+        &:hover{
+          background-size: 100%;
+          color: #fff;
+          &::after{
+            background-color: #fff;
+          }
+          &::before{
+            background-color: #fff;
+          }
+        }
+      }
+    }
   }
   .project_about{
     background-color: #eaefea;

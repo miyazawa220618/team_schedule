@@ -73,9 +73,20 @@ const sch_len = () => {
   }
 }
 
+
+const project_url = () =>{
+  const projectSelect = document.getElementById('project_select');
+  const thisUrl = location.pathname;
+  const splitUrl = thisUrl.split('/');
+  if ((splitUrl[0] == 'projects')){
+
+  }
+}
+
 window.addEventListener("load", this_day);
 window.addEventListener("load", holiday);
 window.addEventListener("load", sch_len);
+window.addEventListener("load", project_url);
 
 
 const schedule_acc = () => {
@@ -133,3 +144,4 @@ const schedule_acc = () => {
 }
 
 window.addEventListener("load", schedule_acc);
+
