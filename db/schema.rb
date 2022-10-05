@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_10_04_123535) do
 
   create_table "shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "share_date", null: false
-    t.integer "time_id", null: false
+    t.integer "hour_id", null: false
     t.text "memo"
     t.bigint "schedule_id", null: false
     t.bigint "user_id", null: false

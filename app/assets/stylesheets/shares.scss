@@ -1,0 +1,137 @@
+.shares_wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1080px;
+  margin: 32px auto;
+}
+
+.share_form{
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  width: 50%;
+}
+.text_field{
+  ._share{
+    height: 100px;
+  }
+}
+
+.person_hour,.person_hour_half{
+  background-color: rgba( 255, 255, 255, 0.8);
+  border-radius: 16px;
+  max-height: 685px;
+  overflow-y: scroll;
+  .shares_list{
+    width: 100%;
+    li{
+      width: 100%;
+      margin: 8px 0 4px;
+      padding: 16px;
+      border: 2px solid #1d945d;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      position: relative;
+      .comment_edit{
+        display: none;
+        width: 140px;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        li{
+          background-color: #888;
+          border: none;
+          border-radius: 4px;
+          padding: 0;
+          margin-bottom: 5px;
+          margin-left: 8px;
+          &:first-child{
+            background-color: #b86464;
+            margin-left: 0;
+          }
+          a{
+            display: block;
+            text-align: center;
+            padding: 4px;
+            font-size: 1.3rem;
+            line-height: 1;
+            color: #fff;
+          }
+        }
+      }
+      &:hover{
+        .comment_edit{
+          display: flex;
+        }
+      }
+    }
+  }
+}
+.person_hour{
+  width: 100%;
+  padding: 40px 80px;
+  .shares_list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+.person_hour_half{
+  width: 47%;
+  padding: 40px 32px;
+  .shares_list{
+    li{
+      width: 100%;
+      padding: 8px 12px;
+      border: 2px solid #1d945d;
+    }
+  }
+}
+.share_box{
+  width: 100%;
+  h4{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    strong{
+      font-size: 160%;
+    }
+  }
+  .share_day{
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    .user-info{
+      display: inline-block;
+      margin-left: 12px;
+      padding: 6px 8px 4px;
+      background-color: #1d945d;
+      border-radius: 24px;
+      color: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+      font-weight: bold;
+    }
+  }
+  .share_memo{
+    margin-top: 4px;
+    font-size: 1.5rem;
+  }
+  .share_file{
+    margin-top: 8px;
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    li{
+      margin: 0 0 0 8px;
+      padding: 0;
+      border: none;
+      width: auto;
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+
+}

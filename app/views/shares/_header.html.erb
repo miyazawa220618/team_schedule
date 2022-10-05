@@ -1,0 +1,13 @@
+<header>
+  <h2><%= link_to image_tag("team_schedule_logo.png") , "/", class:"header_logo" %></h2>
+  <nav>
+  <% if user_signed_in? %>
+    <%= link_to "プロジェクト", projects_path, class: "header_list", id: "nav01", data: {"turbolinks"=>false} %>
+    <%= link_to "カレンダー", schedules_path, class: "header_list", id: "nav02", data: {"turbolinks"=>false} %>
+    <%= link_to "マイページ", user_path(current_user.id), class: "header_list", id: "nav03", data: {"turbolinks"=>false} %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_list _logout", data: {"turbolinks"=>false} %>
+  <% else %>
+    <%= link_to "新規登録", new_user_registration_path, class: "header_list", data: {"turbolinks"=>false} %>
+  <% end %>
+  </nav>
+</header>

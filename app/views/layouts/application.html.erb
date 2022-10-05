@@ -13,7 +13,13 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div  <% if content_for?(:body_attributes) %> 
+    <%= yield(:body_attributes) %>
+  <% end %>
+>
+  <%= yield %>
+
+</div>
   </body>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </html>
