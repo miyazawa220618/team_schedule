@@ -10,7 +10,7 @@
       <div class="field">
         <p class="_required">上記日付の作業時間</p><br />
         <div class="form-list">
-          <%= f.collection_select(:hour_id, Hour.all, :id, :name, {}, {class:"text_field", id:"work-list"}) %>
+          <%= f.collection_select(:hour_id, Hour.all, :id, :name, {}, {class:"text_field"}) %>
         </div>
       </div>
 
