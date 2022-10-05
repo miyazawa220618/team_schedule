@@ -6,6 +6,15 @@ class SharesController < ApplicationController
     @share = Share.new(share_params)
     if @share.save
       redirect_to schedule_path(params[:schedule_id])
+    else
+      @schedule = Schedule.find(params[:schedule_id])
+      @shares = @schedule.shares.includes(:user)
+      @hour = 0
+      @shares.each do |num|
+        @hour += num.hour.name.to_f
+      end
+      @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
+      render 'schedules/show'
     end
   end
 
