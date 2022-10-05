@@ -3,14 +3,31 @@
   justify-content: space-between;
   width: 90%;
   max-width: 1080px;
-  margin: 32px auto;
+  margin: 0 auto 32px;
+}
+
+.shares_ttl{
+  background-image: linear-gradient(to bottom, #424242, #424242);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: center;
+  width: 90%;
+  max-width: 1080px;
+  margin: 40px auto 16px;
+  text-align: center;
+  span{
+    background-color: #d6dfd6;
+    font-size: 2.2rem;
+    font-weight: bold;
+    padding: 0 8px;
+  }
 }
 
 .share_form{
   background-color: #fff;
   border-radius: 16px;
-  padding: 32px 24px;
-  width: 50%;
+  padding: 12px 24px 32px;
+  width: 49%;
 }
 .text_field{
   ._share{
@@ -70,7 +87,7 @@
 }
 .person_hour{
   width: 100%;
-  padding: 40px 80px;
+  padding: 40px 72px;
   .shares_list{
     display: flex;
     justify-content: space-between;
@@ -78,11 +95,12 @@
   }
 }
 .person_hour_half{
-  width: 47%;
+  width: 48%;
   padding: 40px 32px;
   .shares_list{
     li{
       width: 100%;
+      max-width: 456px;
       padding: 8px 12px;
       border: 2px solid #1d945d;
     }
@@ -105,13 +123,16 @@
     .user-info{
       display: inline-block;
       margin-left: 12px;
-      padding: 6px 8px 4px;
       background-color: #1d945d;
       border-radius: 24px;
-      color: #fff;
       font-size: 1.3rem;
       line-height: 1;
       font-weight: bold;
+      a{
+        display: inline-block;
+        color: #fff;
+        padding: 6px 8px 4px;
+      }
     }
   }
   .share_memo{

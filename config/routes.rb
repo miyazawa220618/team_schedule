@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :projects
   resources :schedules do
-    resources :shares, only: [:create, :edit, :update]
+    resources :shares, only: [:create, :edit, :update, :destroy]
   end
 end
