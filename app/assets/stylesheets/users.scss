@@ -2,6 +2,11 @@
   padding: 40px 120px;
   min-height: calc(100vh - 164px);
 }
+.mypage_btn{
+  top: 80px;
+  left: 24px;
+  transform: translateY(0);
+}
 .profile_box{
   display: flex;
   justify-content: space-between;

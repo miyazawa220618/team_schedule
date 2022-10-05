@@ -2,7 +2,7 @@
 
 <main class="_project">
   <div class="ttl">
-    <%= link_to "戻る", projects_path, class: "return_link" %>
+    <%= link_to "戻る", request.referer, class: "return_link" %>
     <h3><%= @project.name %></h3>
     <% @project.users.last(1).each do |member| %>
       <% if current_user.id == member.id %>

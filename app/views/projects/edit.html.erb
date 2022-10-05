@@ -1,6 +1,7 @@
 <%= render "shared/header"%>
 
 <main class="_project _form">
+<%= link_to "戻る", request.referer, class: "return_link project_btn" %>
   <div class="project_form">
     <h3>プロジェクト編集</h3>
     <%= form_with model: @project, local: true do |f| %>

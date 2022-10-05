@@ -1,6 +1,6 @@
 <%= render "shared/header"%>
 <main class="_mypage wrapper">
-
+<%= link_to "戻る", request.referer, class: "return_link mypage_btn" %>
   <div class="profile_box">
     <div class="profile_img">
       <%= image_tag @user.profile_image if @user.profile_image.attached? %>
