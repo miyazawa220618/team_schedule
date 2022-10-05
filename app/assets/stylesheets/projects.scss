@@ -299,6 +299,26 @@
 // -----------------------------------------
 // 新規作成画面（フォーム）
 // -----------------------------------------
+.project_btn{
+  background-image: linear-gradient(to right, #fff, #fff);
+  border: 2px solid #fff;
+  color: #fff;
+  &::before{
+    background-color: #fff;
+  }
+  &::after{
+    background-color: #fff;
+  }
+  &:hover{
+    color: #1d945d;
+    &::before{
+      background-color: #1d945d;
+    }
+    &::after{
+      background-color: #1d945d;
+    }
+  }
+}
 .project_form{
   background-color: #fff;
   border-radius: 16px;
