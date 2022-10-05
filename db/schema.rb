@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_03_084659) do
+ActiveRecord::Schema.define(version: 2022_10_04_123535) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(version: 2022_10_03_084659) do
     t.index ["project_id"], name: "index_schedules_on_project_id"
   end
 
+  create_table "shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "share_date", null: false
+    t.integer "hour_id", null: false
+    t.text "memo"
+    t.bigint "schedule_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_shares_on_schedule_id"
+    t.index ["user_id"], name: "index_shares_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
@@ -83,4 +95,6 @@ ActiveRecord::Schema.define(version: 2022_10_03_084659) do
   add_foreign_key "project_users", "projects"
   add_foreign_key "project_users", "users"
   add_foreign_key "schedules", "projects"
+  add_foreign_key "shares", "schedules"
+  add_foreign_key "shares", "users"
 end

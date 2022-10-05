@@ -1,6 +1,6 @@
-<%= render "shared/header"%>
+<%= render "shares/header"%>
 <main class="_schedule">
-  <div class="ttl">
+  <div class="schedule_about">
     <%= link_to "戻る", schedules_path, class: "return_link" %>
     <h3><span><%= @schedule.project.name %></span><br><%= @schedule.title %></h3>
     <ul class="edit_links">
@@ -19,9 +19,23 @@
       <%= @schedule.start_date %> 〜 <%= @schedule.end_date %>
     </p>
   </div>
-  <div class="share_form ac">
-  <p><br>シェアのフォームが入ります<br></p>
   
+  <h3 class="shares_ttl"><span>実稼働日メモ</span></h3>
+  <div class="shares_wrapper">
+  <% unless @schedule.end_date < Date.today %>
+  <div class="share_form" id="share_form">
+    <%= render "shares/new" %>
   </div>
+  <div class="person_hour_half">
+  <div id="share_form"></div>
+    <%= render "shares/index"%>
+  </div>
+  <% else %>
+  <div class="person_hour">
+    <%= render "shares/index"%>
+  </div>
+   <% end %>
+  </div>
+
 </main>
 <%= render "shared/footer"%>

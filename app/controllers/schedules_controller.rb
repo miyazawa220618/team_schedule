@@ -274,6 +274,14 @@ class SchedulesController < ApplicationController
   end
 
   def show
+    @shares = @schedule.shares.includes(:user)
+    @share = Share.new
+
+    @hour = 0
+    @shares.each do |num|
+      @hour += num.hour.name.to_f
+    end
+    @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
   end
 
   def edit

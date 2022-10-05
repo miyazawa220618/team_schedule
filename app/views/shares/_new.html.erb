@@ -1,0 +1,45 @@
+<%= form_with model: [@schedule, @share], local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+      <div class="field">
+        <p class="_required">作業日</p><br />
+        <%= f.date_field :share_date, id: "project_start" %>
+      </div>
+
+      <div class="field">
+        <p class="_required">上記日付の作業時間</p><br />
+        <div class="form-list">
+          <%= f.collection_select(:hour_id, Hour.all, :id, :name, {}, {class:"text_field"}) %>
+        </div>
+      </div>
+
+      <div class="field">
+        <p class="_any">作業メモ</p><br />
+        <%= f.text_area :memo, class: "text_field _share" %>
+      </div>
+
+      <div class="field file_upload">
+        <p class="_any">添付ファイル</p><br />
+        <div class="file_btn">
+          <%= f.file_field :memo_file, name: "share[memo_files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :memo_file, name: "share[memo_files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :memo_file, name: "share[memo_files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :memo_file, name: "share[memo_files][]", data: {index: 0} %>
+        </div>
+        <div class="file_btn">
+          <%= f.file_field :memo_file, name: "share[memo_files][]", data: {index: 0} %>
+        </div>
+      </div>
+
+      <div class="btn1 actions">
+        <%= f.submit "上記の内容で作成する" %>
+      </div>
+
+    <% end %>

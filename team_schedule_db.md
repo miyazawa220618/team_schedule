@@ -81,7 +81,7 @@
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | share_date | date       | nill: false                    |
-| time_id    | integer    | nill: false                    |
+| hour_id    | integer    | nill: false                    |
 | memo       | text       |                                |
 | schedule   | references | nill: false, foreign_key: true |
 | user       | references | nill: false, foreign_key: true |

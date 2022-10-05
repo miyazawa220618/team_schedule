@@ -1,0 +1,45 @@
+<div class="share_box">
+  <h4>作業工数合計： <strong class="f-en">
+  <%= @hour %>h(<%= (@hour/8).round(1) %>day)
+  </strong></h4>
+  <ul class="shares_list">
+    <% @schedule.shares.each do |share| %>
+      <li class="share_id">
+        <p class="f-en share_day">
+          <%= share.share_date.strftime("%-m/%-d(#{@dat_week[share.share_date.wday]})") %>：<%= share.hour.name %>
+          <span class="user-info f-def">
+            <%= link_to user_path(share.user_id),data: {"turbolinks"=>false} do %>
+              <%= share.user.nickname %>
+            <% end %>
+          </span>
+        </p>
+        <% if share.memo.presence %>
+        <p class="share_memo"><%= safe_join(share.memo.split("\n"),tag(:br)) %></p>
+        <% end %>
+        <% if share.memo_files.presence %>
+        <ul class="share_file">
+          <% share.memo_files.each do |file| %>
+            <% if file.representable? %>
+              <li>
+                <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+                  <%= image_tag file.representation(resize_to_limit: [320, 120]) %>
+                <% end %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %>
+              </li>
+              <% end %>
+          <% end %>
+        </ul>
+        <% end %>
+        <% if (current_user.id == share.user_id) && (@schedule.end_date >= Date.today) %>
+          <ul class="comment_edit">
+            <li><%= link_to "削除", schedule_share_path(share.schedule_id, share.id), method: :delete, data: {"turbolinks"=>false} %></li>
+            <li><%= link_to "編集", edit_schedule_share_path(share.schedule_id, share.id), remote: true %></li>
+          </ul>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

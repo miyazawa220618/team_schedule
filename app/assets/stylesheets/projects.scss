@@ -311,88 +311,88 @@
     font-weight: bold;
     text-align: center;
   }
-  .file_upload{
-    p{
-      line-height: 1;
-    }
-    ._note{
-      font-size: 1.3rem;
-      font-weight: normal;
-      line-height: 1.3;
-      color: #dc003e;
-      padding-left: 1.3rem;
-      text-indent: -1.3rem;
-    }
+}
+.file_upload{
+  p{
+    line-height: 1;
   }
-  .file_btn{
-    margin: 4px 0 8px;
-    p{
-      width: 100%;
-      color: #777;
-      font-size: 1.4rem;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
+  ._note{
+    font-size: 1.3rem;
+    font-weight: normal;
+    line-height: 1.3;
+    color: #dc003e;
+    padding-left: 1.3rem;
+    text-indent: -1.3rem;
   }
-  .flag_box{
-    position: relative;
+}
+.file_btn{
+  margin: 4px 0 8px;
+  p{
+    width: 100%;
+    color: #777;
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-bottom: 4px;
   }
-  #flag_field {
-    position: relative;
-    width: 78px;
-    height: 48px;
-    margin: 8px 0;
-    cursor: pointer;
-    z-index: 0;
-    &::before{
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      width: 85%;
-      height: 25%;
-      border-radius: 20px;
-      display: block;
-      background: #e9e9eb;
-      box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.2) inset;
-      -webkit-transition: 0.2s ease-in-out;
-      transition: 0.2s ease-in-out;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 3px;
-      left: 0px;
-      width: 42px;
-      height: 42px;
-      display: block;
-      border-radius: 50px;
-      background: #fff;
-      box-shadow: 0 3px 12px -4px rgba(0, 0, 0, 0.3);
-      -webkit-transition: 0.2s ease-out;
-      transition: 0.2s ease-out;
-    }
-    &._checked{
-      &::before{
-        background-color: #00c66a;
-      }
-      &::after{
-        left: 36px;
-      }
-    }
-  }
-  input[name="project[member_flag]"] {
+}
+.flag_box{
+  position: relative;
+}
+#flag_field {
+  position: relative;
+  width: 78px;
+  height: 48px;
+  margin: 8px 0;
+  cursor: pointer;
+  z-index: 0;
+  &::before{
+    content: "";
     position: absolute;
-    top: 0;
     left: 0;
-    z-index: 1;
-    opacity: 0;
-    width: 78px;
-    height: 48px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 25%;
+    border-radius: 20px;
+    display: block;
+    background: #e9e9eb;
+    box-shadow: 0 3px 7px -3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
   }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    width: 42px;
+    height: 42px;
+    display: block;
+    border-radius: 50px;
+    background: #fff;
+    box-shadow: 0 3px 12px -4px rgba(0, 0, 0, 0.3);
+    -webkit-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
+  }
+  &._checked{
+    &::before{
+      background-color: #00c66a;
+    }
+    &::after{
+      left: 36px;
+    }
+  }
+}
+input[name="project[member_flag]"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  width: 78px;
+  height: 48px;
 }
 #check_member{
   display: flex;

@@ -1,0 +1,182 @@
+.shares_wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto 32px;
+}
+
+.shares_ttl{
+  background-image: linear-gradient(to bottom, #424242, #424242);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: center;
+  width: 90%;
+  max-width: 1080px;
+  margin: 40px auto 16px;
+  text-align: center;
+  span{
+    background-color: #d6dfd6;
+    font-size: 2.2rem;
+    font-weight: bold;
+    padding: 0 8px;
+  }
+}
+
+.share_form{
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 12px 24px 32px;
+  width: 49%;
+  .field{
+    font-size: 1.5rem;
+    margin-top: 16px;
+    .form-list{
+      width: 240px;
+    }
+  }
+  .text_field{
+    padding: 12px 16px;
+    ._share{
+      height: 100px;
+    }
+  }
+  .btn1{
+    margin-top: 24px;
+    width: 64%;
+    &.actions{
+      font-size: 1.7rem;
+      input{
+        padding: 12px 0;
+      }
+    }
+  }
+}
+
+
+.person_hour,.person_hour_half{
+  background-color: rgba( 255, 255, 255, 0.6);
+  border-radius: 16px;
+  max-height: 600px;
+  overflow-y: scroll;
+  .shares_list{
+    width: 100%;
+    li{
+      background-color: #fff;
+      width: 100%;
+      margin: 8px 0 4px;
+      padding: 16px;
+      border: 2px solid #1d945d;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      position: relative;
+      .comment_edit{
+        display: none;
+        width: 140px;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+        li{
+          background-color: #888;
+          border: none;
+          border-radius: 4px;
+          padding: 0;
+          margin-bottom: 5px;
+          margin-left: 8px;
+          &:first-child{
+            background-color: #b86464;
+            margin-left: 0;
+          }
+          a{
+            display: block;
+            text-align: center;
+            padding: 4px;
+            font-size: 1.3rem;
+            line-height: 1;
+            color: #fff;
+          }
+        }
+      }
+      &:hover{
+        .comment_edit{
+          display: flex;
+        }
+      }
+    }
+  }
+}
+.person_hour{
+  width: 100%;
+  padding: 40px 72px;
+  .shares_list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    li{
+      max-width: 456px;
+    }
+  }
+}
+.person_hour_half{
+  width: 48%;
+  padding: 40px 32px;
+  .shares_list{
+    li{
+      width: 100%;
+      padding: 8px 12px;
+      border: 2px solid #1d945d;
+    }
+  }
+}
+.share_box{
+  width: 100%;
+  h4{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    strong{
+      font-size: 160%;
+    }
+  }
+  .share_day{
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    .user-info{
+      display: inline-block;
+      margin-left: 12px;
+      background-color: #1d945d;
+      border-radius: 24px;
+      font-size: 1.3rem;
+      line-height: 1;
+      font-weight: bold;
+      a{
+        display: inline-block;
+        color: #fff;
+        padding: 6px 8px 4px;
+      }
+    }
+  }
+  .share_memo{
+    margin-top: 4px;
+    font-size: 1.5rem;
+  }
+  .share_file{
+    margin-top: 8px;
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    li{
+      margin: 0 0 0 8px;
+      padding: 0;
+      border: none;
+      width: auto;
+      max-width: 320px;
+      font-size: 1.3rem;
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+
+}

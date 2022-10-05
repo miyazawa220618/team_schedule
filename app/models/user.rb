@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   has_many :project_users
   has_many :projects, through: :project_users
+  has_many :shares
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :work
