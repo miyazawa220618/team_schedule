@@ -20,4 +20,5 @@ class Schedule < ApplicationRecord
         self.start_date <= self.end_date
     end 
   end
+
 end

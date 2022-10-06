@@ -1,10 +1,36 @@
 <%= render "shared/header"%>
 
 <main class="_schedule">
+<div class="search_box">
   <div class="ttl">
     <h2 class="f-en">schedule</h2>
+    <%= search_form_for @q do |f| %>
+      <div class="search_input">
+        <%= f.label :work_id_eq, "役職名を選択" %><br>
+        <div class="search_input_list">
+          <%= f.collection_select :work_id_eq, Work.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+        </div>
+        
+      </div>
+      <div class="search_input">
+        <%= f.label :shares_user_id_eq, "ユーザー名を選択" %><br>
+        <div class="search_input_list">
+          <%= f.collection_select :shares_user_id_eq, User.all, :id, :nickname, include_blank: '指定なし' %>
+        </div>
+      </div>
+      <div class="search_input">
+        <%= f.label :project_name_or_title_or_shares_memo_cont, "キーワードを入力" %><br>
+        <div class="search_input_keyword">
+        <%= f.search_field :project_name_or_title_or_shares_memo_cont %>
+        </div>
+      </div>
+      <div class="search_submit">
+        <%= f.submit "検索" %> 
+      </div>
+    <% end %>
     <%= link_to '作成する', new_schedule_path, class: "link_new"  %>
   </div>
+</div>
 
   <p id="today" style="display:none;"><%= @today.strftime("%-m/%-d(#{@dat_week[@today.wday]})") %></p>
   <% @holiday.each do |day| %>
