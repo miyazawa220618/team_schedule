@@ -3,12 +3,13 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
 
   def index
-    @schedules = Schedule.all
     @today = Date.today
     @monday = Date.today.beginning_of_week
-    @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
 
-    base_week = @monday - 42
+    @q = Schedule.ransack(params[:q])
+    @schedules = @q.result(distinct: true)
+
+    @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
 
     @holiday = []
     at_day = @today - 36
@@ -18,6 +19,67 @@ class SchedulesController < ApplicationController
         @holiday.push(at_day)
       end
     end
+
+    calendar_split
+
+  end
+
+  def new
+    @schedule = Schedule.new
+    referer = Rails.application.routes.recognize_path(request.referer)
+    if (referer[:controller] == 'projects') && (referer[:action] == 'show')
+      @id = referer[:id]
+    end
+  end
+
+  def create
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.save
+      redirect_to schedules_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @shares = @schedule.shares.includes(:user)
+    @share = Share.new
+
+    @hour = 0
+    @shares.each do |num|
+      @hour += num.hour.name.to_f
+    end
+    @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
+  end
+
+  def edit
+  end
+
+  def update
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(params[:id])
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @schedule.destroy
+    redirect_to schedules_path
+  end
+
+
+  private
+  def schedule_params
+    params.require(:schedule).permit(:title, :start_date, :end_date, :work_id, :project_id)
+  end
+
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
+
+  def calendar_split
+    base_week = @monday - 42
 
     1..15.times do |num|
       base_week = base_week + 7
@@ -253,60 +315,6 @@ class SchedulesController < ApplicationController
         @fri_schedule14.push(s)
       end
     end
-
-  end
-
-  def new
-    @schedule = Schedule.new
-    referer = Rails.application.routes.recognize_path(request.referer)
-    if (referer[:controller] == 'projects') && (referer[:action] == 'show')
-      @id = referer[:id]
-    end
-  end
-
-  def create
-    @schedule = Schedule.new(schedule_params)
-    if @schedule.save
-      redirect_to schedules_path
-    else
-      render :new
-    end
-  end
-
-  def show
-    @shares = @schedule.shares.includes(:user)
-    @share = Share.new
-
-    @hour = 0
-    @shares.each do |num|
-      @hour += num.hour.name.to_f
-    end
-    @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
-  end
-
-  def edit
-  end
-
-  def update
-    if @schedule.update(schedule_params)
-      redirect_to schedule_path(params[:id])
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @schedule.destroy
-    redirect_to schedules_path
-  end
-
-  private
-  def schedule_params
-    params.require(:schedule).permit(:title, :start_date, :end_date, :work_id, :project_id)
-  end
-
-  def set_schedule
-    @schedule = Schedule.find(params[:id])
   end
 
 end

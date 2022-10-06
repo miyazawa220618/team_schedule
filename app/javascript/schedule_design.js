@@ -30,7 +30,7 @@ const sch_len = () => {
     const getEndDate = new Date(schEnd);
 
     if ((getEndDate - getStartDate) / 86400000 == 0){
-        schBorder[i].style.width = 'calc(20% - 6px)';
+        schBorder[i].style.width = 'calc(20% - 8px)';
     }else if ((getEndDate - getStartDate) / 86400000 == 1){
       if (getStartDate.getDay() != 5){
         schBorder[i].style.width = 'calc(40% - 6px)';
