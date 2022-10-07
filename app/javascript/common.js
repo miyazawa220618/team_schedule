@@ -24,6 +24,29 @@ const links = () => {
   }
 }
 
+const myaverage = () => {
+  const slickList = document.getElementsByClassName('average_box');
+  const averageFill = document.getElementsByClassName('_fill');
+
+  for (let i = 0; i < slickList.length; i++){
+    let thisList = Number(slickList[i].textContent);
+
+    if (thisList == 0){
+      slickList[i].classList.add('_average40');
+      averageFill[i].style.width = '0%';
+    }else if (thisList < 40){
+      slickList[i].classList.add('_average40');
+      averageFill[i].style.width = thisList+'%';
+    }else if ((thisList >= 40)&&(thisList < 75)){
+      slickList[i].classList.add('_average75');
+      averageFill[i].style.width = thisList+'%';
+    }else if ((thisList >= 75)&&(thisList < 100)){
+      slickList[i].classList.add('_average99');
+      averageFill[i].style.width = thisList+'%';
+    }
+  }
+}
+
 const toggle = () => {
   const flag = document.getElementById('flag_field');
   const input = document.querySelector('input[type="checkbox"][name="project[member_flag]"]');
@@ -65,6 +88,7 @@ const memberCheck = () => {
 
 window.addEventListener("load", works);
 window.addEventListener("load", links);
+window.addEventListener("load", myaverage);
 window.addEventListener("load", toggle);
 window.addEventListener("load", memberCheck);
 

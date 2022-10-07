@@ -1,6 +1,35 @@
+// ブレイクポイント
+$pc: 1160px;
+$tab: 1159px;
+$sp: 639px;
+// @mediaのフォーマット
+@mixin pc {
+  @media screen and (min-width: $pc) {
+    @content;
+  }
+}
+@mixin tab {
+  @media screen and (max-width: $tab) {
+    @content;
+  }
+}
+@mixin sp {
+  @media screen and (max-width: $sp) {
+    @content;
+  }
+}
+
+// -----------------------------------------
+// マイページ画面
+// -----------------------------------------
 ._mypage{
   padding: 40px 120px;
   min-height: calc(100vh - 164px);
+}
+@include tab {
+  ._mypage{
+    padding: 64px 20px;
+  }
 }
 .mypage_btn{
   top: 80px;
@@ -9,19 +38,20 @@
 }
 .profile_box{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   .profile_img{
-    width: 140px;
-    height: 140px;
+    flex-shrink: 1;
+    width: 136px;
+    height: 136px;
     border: #333 2px solid;
+    margin-right: 16px;
     border-radius: 180px;
     background: no-repeat center/contain image-url('default_profile.png');
     overflow: hidden;
     img{
       background-color: #fff;
-      width: 140px;
-      height: 140px;
+      width: 132px;
+      height: 132px;
       object-fit: cover;
     }
   }
@@ -67,7 +97,7 @@
   }
 }
 .profile_txt{
-  margin: 12px 0 24px;
+  margin: 8px 0 24px;
   text-align: left;
   font-size: 1.4rem;
 }
@@ -76,60 +106,77 @@
     li{
       width: 90%;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       h4{
         font-size: 2.4rem;
         font-weight: 600;
         margin-right: 12px;
       }
-      .average{
-        width: 400px;
-        height: 32px;
-        margin-right: 12px;
-        border: 2px solid #000;
-        border-radius: 8px;
-        overflow: hidden;
-        position: relative;
-        &::after{
-          content: '';
-          width: 100%;
-          height: 100%;
-          background-color: #dc003e;
-          position: absolute;
-          top: 0;
-          left: 0;
+      .share_mylist{
+        width: 100%;
+        margin-top: 8px;
+        li{
+          list-style: disc;
+          font-size: 1.6rem;
         }
       }
-      p{
-        color: #dc003e;
-        font-size: 2.4rem;
-        font-weight: 600;
+    }
+  }
+}
+.average_box{
+  display: flex;
+  align-items: center;
+  .average{
+    width: 400px;
+    height: 32px;
+    margin-right: 12px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    ._fill{
+      width: 100%;
+      height: 100%;
+      background-color: #dc003e;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  p{
+    color: #dc003e;
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+  .average_rate{
+    &::after{
+      content: '%';
+    }
+  }
+  &._average40{
+    .average{
+      ._fill{
+        background-color: #1379d0;
       }
     }
-    &._average40{
-      .average{
-        &::after{
-          background-color: #1379d0;
-        }
+    p{color: #1379d0;}
+  }
+  &._average75{
+    .average{
+      ._fill{
+        background-color: #1d945d;
       }
-      p{color: #1379d0;}
     }
-    &._average75{
-      .average{
-        &::after{
-          background-color: #1d945d;
-        }
+    p{color: #1d945d;}
+  }
+  &._average99{
+    .average{
+      ._fill{
+        background-color: #f1a101;
       }
-      p{color: #1d945d;}
     }
-    &._average99{
-      .average{
-        &::after{
-          background-color: #f0b801;
-        }
-      }
-      p{color: #f0b801;}
-    }
+    p{color: #f1a101;}
   }
 }
 .links{
@@ -196,5 +243,83 @@
   &:hover{
     background-size: 100%;
     color: #fff;
+  }
+}
+// -----------------------------------------
+// 一覧画面
+// -----------------------------------------
+.member_all{
+  font-size: 3.6rem;
+  margin-bottom: 24px;
+}
+.member_ttl{
+  font-size: 2.4rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #000;
+}
+.member_lists{
+  margin-bottom: 32px;
+  .member{
+    font-size: 1.6rem;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .member_link{
+      display: flex;
+      align-items: center;
+    }
+    .profile_img{
+      width: 48px;
+      height: 48px;
+      border: #333 1px solid;
+      margin-right: 12px;
+      border-radius: 80px;
+      background: no-repeat center/contain image-url('default_profile.png');
+      overflow: hidden;
+      img{
+        background-color: #fff;
+        width: 46px;
+        height: 46px;
+        object-fit: cover;
+      }
+    }
+    .member_name{
+      margin-right: 12px;
+      color: #000;
+      position: relative;
+      padding-right: 20px;
+      &::after{
+        content: '';
+        background-color: #1d945d;
+        position: absolute;
+        top: 36%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 8px;
+        transform:rotate(45deg);
+      }
+      &::before{
+        content: '';
+        background-color: #1d945d;
+        position: absolute;
+        top: 10%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 8px;
+        transform:rotate(-45deg);
+      }
+    }
+    .average_box{
+      .average{
+        width: 320px;
+      }
+      .average_rate{
+        width: 56px;
+      }
+    }
   }
 }
