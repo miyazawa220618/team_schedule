@@ -70,3 +70,4 @@ gem 'jquery-rails'
 gem 'flag_shih_tzu'
 gem 'holiday_japan'
 gem 'ransack'
+gem "aws-sdk-s3", require: false
