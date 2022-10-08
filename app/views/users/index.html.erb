@@ -1,3 +1,91 @@
 <%= render "shared/header"%>
-<h3>ユーザー一覧</h3>
+<main class="_mypage wrapper">
+  <%= link_to "戻る", request.referer, class: "return_link mypage_btn" %>
+  <h2 class="member_all f-en ac">Members list</h2>
+  <h3 class="member_ttl f-en">Director</h3>
+  <ul class="member_lists">
+    <% @user.each do |user| %>
+      <% if user.work_id == 2 %>
+      <li class="member">
+        <%= link_to user_path(user.id), class: "member_link" do %>
+          <div class="profile_img">
+            <%= image_tag user.profile_image if user.profile_image.attached? %>
+          </div>
+          <span class="member_name"><%= user.nickname %></span>
+        <% end %>
+
+        <% unless Date.today.saturday? || Date.today.sunday? %>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <% if (user.shares.where(share_date: Date.today).sum(:hour_id)) >= 5 %>
+            <p class="f-en average_rate"><%= ((user.shares.where(share_date: Date.today).sum(:hour_id))*10/8) %></p>
+          <% elsif (user.shares.where(share_date: Date.today).sum(:hour_id)) == 0 %>
+            <p class="f-en average_rate">0</p>
+          <% end %>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <h3 class="member_ttl f-en">Designer</h3>
+  <ul class="member_lists">
+    <% @user.each do |user| %>
+      <% if user.work_id == 3 %>
+      <li class="member">
+        <%= link_to user_path(user.id), class: "member_link" do %>
+          <div class="profile_img">
+            <%= image_tag user.profile_image if user.profile_image.attached? %>
+          </div>
+          <span class="member_name"><%= user.nickname %></span>
+        <% end %>
+
+        <% unless Date.today.saturday? || Date.today.sunday? %>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <% if (user.shares.where(share_date: Date.today).sum(:hour_id)) >= 5 %>
+            <p class="f-en average_rate"><%= ((user.shares.where(share_date: Date.today).sum(:hour_id))*10/8) %></p>
+          <% elsif (user.shares.where(share_date: Date.today).sum(:hour_id)) == 0 %>
+            <p class="f-en average_rate">0</p>
+          <% end %>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <h3 class="member_ttl f-en">Engineer</h3>
+  <ul class="member_lists">
+
+    <% @user.each do |user| %>
+      <% if user.work_id == 4 %>
+      <li class="member">
+        <%= link_to user_path(user.id), class: "member_link" do %>
+          <div class="profile_img">
+            <%= image_tag user.profile_image if user.profile_image.attached? %>
+          </div>
+          <span class="member_name"><%= user.nickname %></span>
+        <% end %>
+
+        <% unless Date.today.saturday? || Date.today.sunday? %>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+
+          <% if (user.shares.where(share_date: Date.today).sum(:hour_id)) >= 5 %>
+            <p class="f-en average_rate"><%= ((user.shares.where(share_date: Date.today).sum(:hour_id))*10/8) %></p>
+          <% elsif (user.shares.where(share_date: Date.today).sum(:hour_id)) == 0 %>
+            <p class="f-en average_rate">0</p>
+          <% end %>
+
+        </div>
+        <% end %>
+
+      </li>
+      <% end %>
+    <% end %>
+
+  </ul>
+</main>
 <%= render "shared/footer"%>

@@ -8,12 +8,11 @@
     <section>
       <h3><%= @user.nickname %>さん <span id="my_work"><%= @user.work.name %></span></h3>
       <ul>
-        <li><%= link_to '削除', "#" %></li>
-        <li><%= link_to '編集', "#" %></li>
+        <li><%= link_to '編集', edit_user_registration_path %></li>
       </ul>
       <p>
       <% if @user.profile_text.present? %>
-        <%= @user.profile_text %>
+        <%= safe_join(@user.profile_text.split("\n"),tag(:br)) %>
       <% else %>
         ...
       <% end %>
@@ -26,40 +25,75 @@
   <div class="my_state">
     <ul class="slider">
       <li>
-        <h4 class="f-en">Today's state</h4>
-        <div class="average"></div>
-        <p class="f-en">100%</p>
+        <h4 class="f-en"><%= @day1.strftime("%-m/%-d(#{@dat_week[@day1.wday]})") %></h4>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <p class="f-en average_rate"><%= (@hour1/8*100).round(1) %></p>
+        </div>
+        <ul class="share_mylist">
+          <% @share1.each do |share| %>
+          <li>・<%= share.schedule.project.name %>：<%= share.schedule.title %>（<%= share.hour.name %>）</li>
+          <% end %>
+        </ul>
       </li>
       <li>
-        <h4 class="f-en">Tomorrow's state</h4>
-        <div class="average"></div>
-        <p class="f-en">100%</p>
+        <h4 class="f-en"><%= @day2.strftime("%-m/%-d(#{@dat_week[@day2.wday]})") %></h4>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <p class="f-en average_rate"><%= (@hour2/8*100).round(1) %></p>
+        </div>
+        <ul class="share_mylist">
+          <% @share2.each do |share| %>
+          <li>・<%= share.schedule.project.name %>：<%= share.schedule.title %>（<%= share.hour.name %>）</li>
+          <% end %>
+        </ul>
       </li>
       <li>
-        <h4 class="f-en">2days-later's state</h4>
-        <div class="average"></div>
-        <p class="f-en">100%</p>
+        <h4 class="f-en"><%= @day3.strftime("%-m/%-d(#{@dat_week[@day3.wday]})") %></h4>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <p class="f-en average_rate"><%= (@hour3/8*100).round(1) %></p>
+        </div>
+        <ul class="share_mylist">
+          <% @share3.each do |share| %>
+          <li>・<%= share.schedule.project.name %>：<%= share.schedule.title %>（<%= share.hour.name %>）</li>
+          <% end %>
+        </ul>
       </li>
       <li>
-        <h4 class="f-en">3days-later's state</h4>
-        <div class="average"></div>
-        <p class="f-en">100%</p>
+        <h4 class="f-en"><%= @day4.strftime("%-m/%-d(#{@dat_week[@day4.wday]})") %></h4>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <p class="f-en average_rate"><%= (@hour4/8*100).round(1) %></p>
+        </div>
+        <ul class="share_mylist">
+          <% @share4.each do |share| %>
+          <li>・<%= share.schedule.project.name %>：<%= share.schedule.title %>（<%= share.hour.name %>）</li>
+          <% end %>
+        </ul>
       </li>
       <li>
-        <h4 class="f-en">4days-later's state</h4>
-        <div class="average"></div>
-        <p class="f-en">100%</p>
+        <h4 class="f-en"><%= @day5.strftime("%-m/%-d(#{@dat_week[@day5.wday]})") %></h4>
+        <div class="average_box">
+          <div class="average"><div class="_fill"></div></div>
+          <p class="f-en average_rate"><%= (@hour5/8*100).round(1) %></p>
+        </div>
+        <ul class="share_mylist">
+          <% @share5.each do |share| %>
+            <li>・<%= share.schedule.project.name %>：<%= share.schedule.title %>（<%= share.hour.name %>）</li>
+          <% end %>
+        </ul>
       </li>
     </ul>
   </div>
 
   <ul class="links">
-    <li><%= link_to "プロジェクト一覧", "#" %></li>
-    <li><%= link_to "プロジェクト新規作成", "#" %></li>
-    <li><%= link_to "スケジュールカレンダー", "#" %></li>
-    <li><%= link_to "スケジュール新規作成", "#" %></li>
+    <li><%= link_to "プロジェクト一覧", projects_path %></li>
+    <li><%= link_to "プロジェクト新規作成", new_project_path %></li>
+    <li><%= link_to "マイスケジュール", "/schedules?q%5Bwork_id_eq%5D=&q%5Bshares_user_id_eq%5D=#{@user.id}&q%5Bproject_name_or_title_or_shares_memo_cont%5D=&commit=検索" %></li>
+    <li><%= link_to "スケジュール新規作成", new_schedule_path %></li>
   </ul>
 
-  <%= link_to "ユーザー一覧はこちら", users_path, class: "other_users" %>
+  <%= link_to "メンバーリストはこちら", users_path, class: "other_users" %>
 </main>
 <%= render "shared/footer"%>

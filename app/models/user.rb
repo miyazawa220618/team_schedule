@@ -19,7 +19,7 @@ class User < ApplicationRecord
     validates :work_id,  numericality: {other_than: 1 , message: "can't be blank"}
   end
 
-  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}, unless: :project?
+  validates :password, format: { with: VALID_PASS_REGEX, message: "is invalid"}, allow_blank: true, unless: :project?
   validates :profile_text, {length: {maximum: 800}}
 
   def project?
