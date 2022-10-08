@@ -8,8 +8,7 @@
     <section>
       <h3><%= @user.nickname %>さん <span id="my_work"><%= @user.work.name %></span></h3>
       <ul>
-        <li><%= link_to '削除', "#" %></li>
-        <li><%= link_to '編集', "#" %></li>
+        <li><%= link_to '編集', edit_user_registration_path %></li>
       </ul>
       <p>
       <% if @user.profile_text.present? %>
@@ -95,6 +94,6 @@
     <li><%= link_to "スケジュール新規作成", new_schedule_path %></li>
   </ul>
 
-  <%= link_to "ユーザー一覧はこちら", users_path, class: "other_users" %>
+  <%= link_to "メンバーリストはこちら", users_path, class: "other_users" %>
 </main>
 <%= render "shared/footer"%>
