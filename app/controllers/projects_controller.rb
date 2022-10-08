@@ -30,6 +30,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @comments = @project.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def edit

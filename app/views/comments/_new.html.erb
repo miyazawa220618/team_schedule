@@ -1,0 +1,11 @@
+<%= form_with model: [@project, @comment], local: true do |f| %>
+
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="comment_inner">
+    <%= f.text_area :text, autofocus: true %>
+
+    <div class="comment_submit">
+      <%= f.submit "コメントする" %>
+    </div>
+  </div>
+<% end %>

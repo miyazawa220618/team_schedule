@@ -632,16 +632,24 @@ input[name="project[member_flag]"] {
     margin-top: 28px;
     padding-top: 12px;
     border-top: 4px solid #1d945d;
+    position: relative;
     h3{
       font-size: 1.8rem;
       font-weight: bold;
     }
-    .comment_form{
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin: 4px 0;
-      input{
+    #comment_form{
+      .error-message{
+        position: absolute;
+        top: 15px;
+        left: 120px;
+      }
+      .comment_inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin: 4px 0;
+      }
+      textarea{
         background-color: #f2f5f4;
         border: 1px solid #eee;
         border-radius: 12px;
@@ -651,15 +659,25 @@ input[name="project[member_flag]"] {
         height: 64px;
         font-size: 1.5rem;
       }
+      .field_with_errors{
+        width: 86%;
+        textarea{
+          width: 100%;
+        }
+      }
       .comment_submit{
         width: 13%;
-        background-color: #1d945d;
-        border-radius: 8px;
-        padding: 8px 0;
-        color: #fff;
-        font-size: 1.4rem;
-        font-weight: bold;
-        text-align: center;
+        input{
+          background-color: #1d945d;
+          width: 100%;
+          border: none;
+          border-radius: 8px;
+          padding: 8px 0;
+          color: #fff;
+          font-size: 1.4rem;
+          font-weight: bold;
+          text-align: center;
+        }
       }
     }
     .comment_list{
