@@ -75,10 +75,10 @@
 
       <div class="field">
         <p class="_any">メンバーを選択</p><br />
+        <input type="hidden" name="project[user_ids][]" value=<%= current_user.id %>>
         <div id="check_member">
         <%= f.collection_check_boxes :user_ids, User.where.not(id: current_user.id), :id, :nickname, {include_hidden: false} %>
         </div>
-        <input type="hidden" name="project[user_ids][]" value=<%= current_user.id %>>
       </div>
 
       <div class="field">

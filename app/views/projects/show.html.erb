@@ -4,7 +4,7 @@
   <div class="ttl">
     <%= link_to "戻る", request.referer, class: "return_link" %>
     <h3><%= @project.name %></h3>
-      <% if current_user.id == @project.project_users.last.user_id %>
+      <% if current_user.id == @project.project_users.first.user_id %>
         <ul class="edit_links">
           <li><%= link_to "削除", project_path(@project.id), method: :delete, data: {"turbolinks"=>false} %></li>
           <li><%= link_to "編集", edit_project_path(@project.id), data: {"turbolinks"=>false} %></li>
