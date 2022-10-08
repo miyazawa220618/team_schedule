@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show]
-  resources :projects
+  resources :projects do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
   resources :schedules do
     resources :shares, only: [:create, :edit, :update, :destroy]
   end
