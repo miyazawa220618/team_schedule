@@ -45,5 +45,5 @@ class SharesController < ApplicationController
 
   def move_to_show
     redirect_to schedule_path(params[:schedule_id]) unless (user_signed_in? && current_user.id == @share.user_id)
-end
+  end
 end
