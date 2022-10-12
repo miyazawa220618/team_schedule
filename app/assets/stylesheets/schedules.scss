@@ -18,76 +18,6 @@
     width: 90%;
     min-width: 1000px;
     margin: 0 auto;
-    .schedule_search{
-      width: 684px;
-      display: flex;
-      align-items: flex-end;
-      font-size: 1.3rem;
-      font-weight: bold;
-      .search_input{
-        label{
-          padding-left: 4px;
-        }
-        input,select{
-          background-color: #e4eee7;
-          width: 100%;
-          border: none;
-          border-radius: 8px;
-          font-size: 1.4rem;
-          font-weight: normal;
-          line-height: 1;
-        }
-        .search_input_keyword{
-          width: 240px;
-          margin-top: 4px;
-          margin-right: 12px;
-        }
-        input{
-          padding: 8px 12px;
-        }
-        .search_input_list{
-          width: 200px;
-          margin-top: 4px;
-          margin-right: 12px;
-          position: relative;
-          select{
-            padding: 12px 12px;
-            -webkit-appearance: none;
-            appearance: none;
-          }
-          &::before{
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 16px;
-            transform: translateY(-50%);
-            width: 0;
-            border-top: 7px solid #1d945d;
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-          }
-        }
-      &:first-child{
-        .search_input_list{
-          width: 140px;
-        }
-      }
-      }
-      .search_submit{
-        width: 72px;
-        margin-bottom: 2px;
-        input{
-          background-color: #1d945d;
-          border: none;
-          border-radius: 8px;
-          width: 100%;
-          padding: 10px 0;
-          color: #fff;
-          font-size: 1.5rem;
-          line-height: 1;
-        }
-      }
-    }
     .link_new{
       top: 60%;
       right: 0;
@@ -168,6 +98,78 @@
 // -----------------------------------------
 // 一覧画面
 // -----------------------------------------
+// ----- 検索機能
+.schedule_search,.project_search{
+  width: 684px;
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.3rem;
+  font-weight: bold;
+  .search_input{
+    label{
+      padding-left: 4px;
+    }
+    input,select{
+      background-color: #e4eee7;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.4rem;
+      font-weight: normal;
+      line-height: 1;
+    }
+    .search_input_keyword{
+      width: 240px;
+      margin-top: 4px;
+      margin-right: 12px;
+    }
+    input{
+      padding: 8px 12px;
+    }
+    .search_input_list{
+      width: 200px;
+      margin-top: 4px;
+      margin-right: 12px;
+      position: relative;
+      select{
+        padding: 12px 12px;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        width: 0;
+        border-top: 7px solid #1d945d;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+      }
+    }
+  &:first-child{
+    .search_input_list{
+      width: 140px;
+    }
+  }
+  }
+  .search_submit{
+    width: 72px;
+    margin-bottom: 2px;
+    input{
+      background-color: #1d945d;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      padding: 10px 0;
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+  }
+}
+// ----- カレンダーアコーディオン表示
 .accordion_list{
   display: none;
   margin: 20px auto;

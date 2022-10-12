@@ -2,7 +2,7 @@
 
 <main class="_project">
   <div class="ttl">
-    <%= link_to "戻る", request.referer, class: "return_link" %>
+    <%= link_to "戻る", request.referer, class: "return_link project_btn" %>
     <h3><%= @project.name %></h3>
       <% if current_user.id == @project.project_users.first.user_id %>
         <ul class="edit_links">

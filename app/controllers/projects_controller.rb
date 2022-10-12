@@ -4,9 +4,11 @@ class ProjectsController < ApplicationController
   before_action :move_to_show, only: [:edit, :update, :destroy]
 
   def index
-    projects = Project.all
-    @project_after = Project.where("project_start > ?", Date.today)
-    @project_now = Project.where("project_start <= ? and project_end >= ?", Date.today, Date.today)
+    @q = Project.with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
+    projects = @q.result(distinct: true)
+
+    @project_after = projects.where("project_start > ?", Date.today)
+    @project_now = projects.where("project_start <= ? and project_end >= ?", Date.today, Date.today)
 
     @project_before = []
     projects.each do |project|
