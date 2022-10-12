@@ -19,9 +19,9 @@
         </div>
       </div>
       <div class="search_input">
-        <%= f.label :project_name_or_title_or_shares_memo_cont, "キーワードを入力" %><br>
+        <%= f.label :keywords, "キーワードを入力" %><br>
         <div class="search_input_keyword">
-        <%= f.search_field :project_name_or_title_or_shares_memo_cont %>
+        <%= f.text_field :keywords, value: params[:q]&.dig(:keywords) %>
         </div>
       </div>
       <div class="search_submit">
