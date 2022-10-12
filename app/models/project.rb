@@ -21,6 +21,17 @@ class Project < ApplicationRecord
     end 
   end
 
+  scope :with_keywords, -> keywords {
+    if keywords.present?
+      squished_keywords = keywords.squish
+      keywords = squished_keywords.split(" ")
+      name = Project.arel_table[:name]
+      about = Project.arel_table[:about]
+      where(keywords.map {|keyword|
+        name.matches("%#{keyword}%").or( about.matches("%#{keyword}%") )
+      }.inject(:and))
+    end
+  }
 
   include FlagShihTzu
 
