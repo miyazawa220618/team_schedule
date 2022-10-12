@@ -1,8 +1,26 @@
 <%= render "shared/header"%>
 <main class="_project">
-  <div class="ttl">
-    <h2 class="f-en">PROJECTS</h2>
+  <div class="search_box">
+    <div class="ttl">
+    <%= search_form_for @q do |f| %>
+      <div class="search_input">
+        <%= f.label :users_id_eq, "ユーザー名を選択" %><br>
+        <div class="search_input_list">
+          <%= f.collection_select :users_id_eq, User.all, :id, :nickname, include_blank: '指定なし' %>
+        </div>
+      </div>
+      <div class="search_input">
+        <%= f.label :keywords, "キーワードを入力" %><br>
+        <div class="search_input_keyword">
+        <%= f.text_field :keywords, value: params[:q]&.dig(:keywords) %>
+        </div>
+      </div>
+      <div class="search_submit">
+        <%= f.submit "検索" %> 
+      </div>
+    <% end %>
     <%= link_to "プロジェクト作成", new_project_path, class: "link_new" %>
+    </div>
   </div>
   <div class="project_all">
     <section class="project_box _after">
