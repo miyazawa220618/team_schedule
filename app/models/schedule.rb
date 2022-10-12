@@ -18,7 +18,20 @@ class Schedule < ApplicationRecord
     if start_date.present? && end_date.present?
       errors.add(:end_date, "must be greater than Project start") unless
         self.start_date <= self.end_date
-    end 
-  end
+      end
+    end
+  # end
+
+  scope :with_keywords, -> keywords {
+    if keywords.present?
+      squished_keywords = keywords.squish
+      keywords = squished_keywords.split(" ")
+      sch = Schedule.arel_table[:title]
+      pro = Project.arel_table[:name]
+      where(keywords.map {|keyword|
+         sch.matches("%#{keyword}%").or( pro.matches("%#{keyword}%") )
+      }.inject(:and))
+    end
+  }
 
 end

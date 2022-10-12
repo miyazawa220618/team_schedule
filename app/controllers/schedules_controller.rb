@@ -6,7 +6,7 @@ class SchedulesController < ApplicationController
     @today = Date.today
     @monday = Date.today.beginning_of_week
 
-    @q = Schedule.ransack(params[:q])
+    @q = Schedule.joins(:project).select('schedules.*, projects.name AS project_name').with_keywords(params.dig(:q, :keywords)).ransack(params[:q])
     @schedules = @q.result(distinct: true)
 
     @dat_week = ['SUN','MON','TUE','WED','THE','FRI','SAT']
