@@ -4,7 +4,7 @@
 // ブレイクポイント
 $pc: 1040px;
 $tab: 1039px;
-$sp: 799px;
+$sp: 699px;
 // @mediaのフォーマット
 @mixin pc {
   @media screen and (min-width: $pc) {
@@ -38,6 +38,12 @@ $sp: 799px;
       justify-content: space-between;
       flex-wrap: wrap;
       padding: 0;
+      @include tab {
+        min-width: 648px;
+      }
+      @include sp {
+        min-width: none;
+      }
     }
     aside{
       width: 36%;

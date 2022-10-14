@@ -27,7 +27,7 @@ a{
 // ブレイクポイント
 $pc: 1040px;
 $tab: 1039px;
-$sp: 799px;
+$sp: 699px;
 // @mediaのフォーマット
 @mixin pc {
   @media screen and (min-width: $pc) {

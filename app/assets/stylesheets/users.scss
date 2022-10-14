@@ -1,7 +1,7 @@
 // ブレイクポイント
 $pc: 1040px;
 $tab: 1039px;
-$sp: 799px;
+$sp: 699px;
 // @mediaのフォーマット
 @mixin pc {
   @media screen and (min-width: $pc) {
@@ -28,10 +28,12 @@ $sp: 799px;
   min-height: calc(100vh - 164px);
   @include tab {
     padding: 64px 0 56px;
+    min-width: 648px;
   }
   @include sp {
-    padding: 16vw 0 13.6vw;
+    padding: 60px 0 13.6vw;
     min-height: calc(100vh - 38.8vw);
+    min-width: 270px;
     position: relative;
   }
 }
@@ -41,14 +43,12 @@ $sp: 799px;
   left: 24px;
   transform: translateY(0);
   @include sp{
-    width: 32vw;
-    top: 3.2vw;
-    left: -7.2vw;
-    font-size: 3.8vw;
-    padding: 1.2vw 3.2vw 1.2vw 4.8vw;
+    top: 16px;
+    left: calc(-22px - 2.4vw);
+    font-size: 1.3rem;
+    padding: 4px 0 4px 24px;
     &::after,&::before{
-      left: 5.6vw;
-      height: 2.2vw;
+      left: calc(22px + 2.4vw);
     }
   }
 }
@@ -396,8 +396,14 @@ $sp: 799px;
         width: 52%;
       }
       a{
-        padding: 2.4vw 1.6vw 2.4vw 4vw;
-        font-size: calc(9.6px + 0.96vw);
+        padding: 2.4vw 1.2vw 2.4vw 3.2vw;
+        font-size: calc(5.2px + 2.4vw);
+        &::after{
+          left: 2px;
+          border-top: 5px solid transparent;
+          border-left: 5px solid #1d945d;
+          border-bottom: 5px solid transparent;
+        }
       }
     }
   }
@@ -536,7 +542,7 @@ $sp: 799px;
         margin-top: 6px;
         .average{
           width: calc(100% - 32px);
-          border: 0.6vw solid #000;
+          border: 1.6px solid #000;
           height: 24px;
         }
         .average_rate{
