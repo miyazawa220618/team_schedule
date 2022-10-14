@@ -67,7 +67,7 @@ const memberCheck = () => {
   const checkField = document.getElementById('check_member');
   const input = document.querySelectorAll('input[type="checkbox"][name="project[user_ids][]');
   const label = document.querySelectorAll('label');
-  if (!label) return null;
+  if (!checkField) return null;
   for (let i = 0; i < label.length; i++){
     const inputA = input[i];
     const labelA = label[i];

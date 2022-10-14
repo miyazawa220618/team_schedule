@@ -6,22 +6,27 @@
       <%= image_tag @user.profile_image if @user.profile_image.attached? %>
     </div>
     <section>
-      <h3><%= @user.nickname %>さん <span id="my_work"><%= @user.work.name %></span></h3>
-      <ul>
-        <li><%= link_to '編集', edit_user_registration_path %></li>
-      </ul>
-      <p>
+      <h3><%= @user.nickname %>さん <br class="none s-inline"><span id="my_work"><%= @user.work.name %></span></h3>
+      <div class="link_edit">
+        <input type="checkbox" id="edit_btn_check" class="none">
+        <label for="edit_btn_check" class="edit_btn none s-ib"><span></span><span></span><span></span></label>
+        <div class="s-none"><%= link_to '編集', edit_user_registration_path %></div>
+      </div>
+      <p class="s-none">
       <% if @user.profile_text.present? %>
         <%= safe_join(@user.profile_text.split("\n"),tag(:br)) %>
-      <% else %>
-        ...
       <% end %>
       </p>
+      <p class="profile_email none s-block">連絡先：<%= @user.email %></p>
     </section>
   </div>
 
-  <p class="profile_txt">連絡先：<%= @user.email %></p>
-
+  <p class="profile_email s-none">連絡先：<%= @user.email %></p>
+  <p class="profile_txt none s-block">
+  <% if @user.profile_text.present? %>
+    <%= safe_join(@user.profile_text.split("\n"),tag(:br)) %>
+    <% end %>
+  </p>
   <div class="my_state">
     <ul class="slider">
       <li>

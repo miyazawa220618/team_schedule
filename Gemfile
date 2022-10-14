@@ -66,6 +66,10 @@ group :development do
   gem 'rubocop', require: false
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 gem 'devise'
 gem 'pry-rails'
 gem 'active_hash'
@@ -76,7 +80,3 @@ gem 'flag_shih_tzu'
 gem 'holiday_japan'
 gem 'ransack'
 gem "aws-sdk-s3", require: false
-
-group :production do
-  gem 'unicorn', '5.4.1'
-end

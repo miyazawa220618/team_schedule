@@ -1,22 +1,63 @@
+// -----------------------------------------------
+// レスポンシブ対応
+// -----------------------------------------------
+// ブレイクポイント
+$pc: 1040px;
+$tab: 1039px;
+$sp: 799px;
+// @mediaのフォーマット
+@mixin pc {
+  @media screen and (min-width: $pc) {
+    @content;
+  }
+}
+@mixin tab {
+  @media screen and (max-width: $tab) {
+    @content;
+  }
+}
+@mixin sp {
+  @media screen and (max-width: $sp) {
+    @content;
+  }
+}
+
+
 .login{
   background: no-repeat center/cover image-url('login_bg.jpg');
   min-height: calc(100vh - 164px);
   padding: 40px 0 64px;
+  @include sp {
+    padding: 4.8vw 0 12vw;
+  }
   .wrapper{
     // ======= ログイン画面 ========
     &._login{
+      max-width: 960px;
       display: flex;
       justify-content: space-between;
-      padding: 0 80px;
+      flex-wrap: wrap;
+      padding: 0;
     }
     aside{
       width: 36%;
       padding-top: 48px;
+      @include sp {
+        width: 84%;
+        padding-top: 0;
+        margin: 0 auto;
+      }
       h4{
         font-size: 4.4rem;
         font-weight: 600;
         font-style: italic;
         line-height: 1.2;
+        @include tab {
+          font-size: 4.0rem;
+        }
+        @include sp {
+          font-size: 3.2rem;
+        }
       }
       ul{
         display: flex;
@@ -34,6 +75,18 @@
           &.day{
             background: no-repeat center/contain image-url('login_day.png');
           }
+          @include tab {
+            padding: 72px 0 28px;
+            font-size: 6.0rem;
+          }
+        }
+        @include sp {
+          margin: 4px auto 16px;
+          width: 64%;
+          li{
+            padding: 10.4vw 0 3.2vw;
+            font-size: 12vw;
+          }
         }
       }
     }
@@ -42,17 +95,32 @@
       width: 56%;
       border-radius: 24px;
       padding: 40px 52px;
+      @include tab {
+        width: 58%;
+        padding: 40px 40px;
+      }
+      @include sp {
+        width: 100%;
+        border-radius: 16px;
+        padding: 6.4vw 5vw;
+      }
     }
       h2{
         font-size: 2.2rem;
         font-weight: bold;
         text-align: center;
+        @include sp {
+          font-size: 1.8rem;
+        }
       }
       a{
         font-size: 1.4rem;
         line-height: 2.0;
         color: #555;
         text-decoration: underline;
+        @include sp {
+          font-size: 1.2rem;
+        }
       }
   }
   .ttl{
@@ -61,6 +129,10 @@
     font-style: italic;
     margin-bottom: 24px;
     text-align: center;
+    @include sp {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
   }
 }
 
@@ -68,6 +140,16 @@
   width: 100%;
   margin-top: 24px;
   font-size: 1.6rem;
+  @include sp {
+    margin-top: 18px;
+    font-size: 1.5rem;
+    em{
+      font-size: 1.3rem;
+    }
+    i{
+      font-size: 1.3rem;
+    }
+  }
   p{
     display: inline-block;
     font-weight: bold;
@@ -87,6 +169,11 @@
         color: #fff;
         font-size: 1.3rem;
         line-height: 1;
+        @include sp {
+          right: -36px;
+          padding: 2px 5px;
+          font-size: 1.1rem;
+        }
       }
     }
     &._any{
@@ -103,6 +190,11 @@
         color: #fff;
         font-size: 1.3rem;
         line-height: 1;
+        @include sp {
+          right: -36px;
+          padding: 2px 5px;
+          font-size: 1.1rem;
+        }
       }
     }
   }
@@ -113,6 +205,10 @@
     border-radius: 8px;
     padding: 12px 20px;
     font-size: 1.5rem;
+    @include sp {
+      font-size: 1.4rem;
+      padding: 12px 12px;
+    }
     &:focus{
       background-color: #e4eee7;
     }
@@ -130,12 +226,25 @@
   margin: 32px auto;
   font-weight: bold;
   text-align: center;
+  @include tab {
+    width: 68%;
+    margin: 24px auto;
+  }
+  @include sp {
+    margin: 18px auto;
+  }
   &.actions{
     input{
       background-color: #1d945d;
       color: #fff;
       font-size: 1.8rem;
       line-height: 1;
+      @include tab {
+        font-size: 1.7rem;
+      }
+      @include sp {
+        font-size: 1.6rem;
+      }
     }
   }
   &.registrations{
@@ -144,6 +253,12 @@
       text-decoration: none;
       font-size: 1.8rem;
       line-height: 1;
+      @include tab {
+        font-size: 1.6rem;
+      }
+      @include sp {
+        font-size: 1.6rem;
+      }
     }
   }
   input,a{
@@ -152,6 +267,12 @@
     padding: 16px 0;
     border: 3px solid #1d945d;
     border-radius: 12px;
+    @include tab {
+      padding: 14px 0;
+    }
+    @include sp {
+      padding: 10px 0;
+    }
   }
 }
 .btn1{
@@ -188,6 +309,10 @@
   background-color: #fff;
   border-radius: 24px;
   padding: 40px 72px;
+  @include sp {
+    border-radius: 16px;
+    padding: 6.4vw 5vw;
+  }
 }
 .field{
   input[name="user[nickname]"],input[name="user[password]"],

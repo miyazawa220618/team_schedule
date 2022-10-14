@@ -129,6 +129,15 @@
         background-size: 100%;
         color: #fff;
       }
+      &.project_btn{
+        background-image: linear-gradient(to right, #fff, #fff);
+        border: 2px solid #fff;
+        color: #fff;
+        &:hover{
+          background-size: 100%;
+          color: #1d945d;
+        }
+      }
     }
   }
 }
