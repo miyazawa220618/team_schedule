@@ -2,10 +2,18 @@
 
 <main class="_project">
   <div class="ttl">
-    <%= link_to "戻る", request.referer, class: "return_link project_btn" %>
+    <%= link_to "戻る", request.referer, class: "return_link project_btn", data: {"turbolinks"=>false} %>
     <h3><%= @project.name %></h3>
       <% if current_user.id == @project.project_users.first.user_id %>
-        <ul class="edit_links">
+      <div class="link_edit project_btn">
+        <input type="checkbox" id="edit_btn_check" class="none">
+        <label for="edit_btn_check" class="edit_btn none m-ib"><span></span><span></span><span></span></label>
+        <ul class="edit_links none">
+          <li><%= link_to "削除", project_path(@project.id), method: :delete, data: {"turbolinks"=>false} %></li>
+          <li><%= link_to "編集", edit_project_path(@project.id), data: {"turbolinks"=>false} %></li>
+        </ul>
+      </div>
+      <ul class="edit_links flex m-none">
           <li><%= link_to "削除", project_path(@project.id), method: :delete, class: 'project_btn', data: {"turbolinks"=>false} %></li>
           <li><%= link_to "編集", edit_project_path(@project.id), class: 'project_btn', data: {"turbolinks"=>false} %></li>
         </ul>
@@ -67,12 +75,18 @@
             <p>from: <%= comment.user.nickname %><span><%= comment.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></span></p>
           </div>
           <p class="comment_text"><%= comment.text %></p>
+
           <% if current_user.id == comment.user_id %>
-          <ul class="comment_edit">
-            <li><%= link_to "編集", edit_project_comment_path(comment.project_id, comment.id), remote: true %></li>
-            <li><%= link_to "削除", project_comment_path(comment.project_id, comment.id), method: :delete, data: {"turbolinks"=>false} %></li>
-          </ul>
+          <div class="comment_edit_box">
+            <input type="checkbox" id="comment_edit_check" class="none">
+            <label for="comment_edit_check" class="edit_btn none m-ib"><span></span><span></span><span></span></label>
+            <ul class="comment_edit">
+              <li><%= link_to "編集", edit_project_comment_path(comment.project_id, comment.id), remote: true %></li>
+              <li><%= link_to "削除", project_comment_path(comment.project_id, comment.id), method: :delete, data: {"turbolinks"=>false} %></li>
+            </ul>
+          </div>
           <% end %>
+
         </li>
         <% end %>
       </ul>

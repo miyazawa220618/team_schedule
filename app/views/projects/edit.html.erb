@@ -1,9 +1,11 @@
 <%= render "shared/header"%>
 
 <main class="_project _form">
-<%= link_to "戻る", request.referer, class: "return_link project_btn" %>
+  <div class="ttl">
+    <%= link_to "戻る", request.referer, class: "return_link project_btn" %>
+    <h4>プロジェクト編集</h4>
+  </div>
   <div class="project_form">
-    <h3>プロジェクト編集</h3>
     <%= form_with model: @project, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
@@ -90,7 +92,7 @@
       </div>
 
       <div class="btn1 actions">
-        <%= f.submit "上記の内容で作成する" %>
+        <%= f.submit "上記の内容に変更する" %>
       </div>
     <% end %>
   </div>

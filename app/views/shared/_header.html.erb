@@ -10,9 +10,9 @@
       <input type="checkbox" id="menu_btn_check">
       <label for="menu_btn_check" class="menu_btn"><span></span><span></span><span></span></label>
       <nav class="menu_content">
-        <%= link_to "プロジェクト", projects_path, class: "header_list flex", id: "nav01" %>
-        <%= link_to "スケジュール", schedules_path, class: "header_list flex", id: "nav02" %>
-        <%= link_to "マイページ", user_path(current_user.id), class: "header_list flex", id: "nav03" %>
+        <%= link_to "プロジェクト", projects_path, class: "header_list flex", id: "nav04" %>
+        <%= link_to "スケジュール", schedules_path, class: "header_list flex", id: "nav05" %>
+        <%= link_to "マイページ", user_path(current_user.id), class: "header_list flex", id: "nav06" %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_list _logout flex" %>
       </nav>
     </div>

@@ -1,3 +1,24 @@
+// ブレイクポイント
+$pc: 1040px;
+$tab: 1039px;
+$sp: 699px;
+// @mediaのフォーマット
+@mixin pc {
+  @media screen and (min-width: $pc) {
+    @content;
+  }
+}
+@mixin tab {
+  @media screen and (max-width: $tab) {
+    @content;
+  }
+}
+@mixin sp {
+  @media screen and (max-width: $sp) {
+    @content;
+  }
+}
+
 // -----------------------------------------
 // プロジェクト共通...
 // -----------------------------------------
@@ -6,19 +27,31 @@
   padding: 0 0 24px;
   width: 100%;
   min-height: calc(100vh - 164px);
+  @include sp{
+    min-height: calc(100vh - 38.8vw);
+  }
   &._form{
-    padding: 40px 0;
+    padding: 0 0 40px;
   }
   .ttl{
     position: relative;
-    width: 90%;
+    width: 94%;
     min-width: 1000px;
     margin: 0 auto;
     h3{
       padding: 32px 0 28px;
-      font-size: 3.2rem;
+      font-size: 3.0rem;
       font-weight: bold;
       font-style: italic;
+      text-align: center;
+      line-height: 1.2;
+      max-width: calc(100% - 420px);
+      margin: 0 auto;
+    }
+    h4{
+      padding: 28px 0 24px;
+      font-size: 2.8rem;
+      font-weight: bold;
       text-align: center;
       line-height: 1;
     }
@@ -26,12 +59,46 @@
   .search_box{
     background-color: rgb(252, 252, 252);
     padding: 16px 0 24px;
+    @include sp {
+      padding: 56px 0 0;
+    }
+  }
+  @include tab {
+    .ttl{
+      position: relative;
+      min-width: auto;
+      width: 94%;
+      padding: 0;
+      h3{
+        padding: 30px 0 24px;
+        font-size: 2.6rem;
+        max-width: calc(100% - 200px);
+        margin: 0 auto;
+      }
+      h4{
+        font-size: 2.8rem;
+      }
+    }
+  }
+  @include sp {
+    .ttl{
+      width: 100%;
+      h3{
+        padding: 60px 0 16px;
+        font-size: 2.0rem;
+        max-width: 96%;
+      }
+      h4{
+        padding: 56px 0 16px;
+        font-size: 2.0rem;
+      }
+    }
   }
 }
 .link_new{
   position: absolute;
   top: 50%;
-  right: 24px;
+  right: 0;
   transform: translateY(-50%);
   background-image: linear-gradient(to right, #1d945d, #1d945d);
   background-repeat: no-repeat;
@@ -51,66 +118,71 @@
     background-size: 100%;
     color: #fff;
   }
+  @include tab {
+    top: 58%;
+    width: 24%;
+    max-width: 180px;
+    padding: 12px 0;
+    font-size: 1.5rem;
+  }
+  @include sp {
+    top: -48px;
+    width: 64%;
+    max-width: none;
+    padding: 10px 0;
+    right: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
-.return_link{
-  position: absolute;
-  top: 50%;
-  left: 24px;
-  transform: translateY(-50%);
-  display: block;
-  width: 120px;
-  background-image: linear-gradient(to right, #777, #777);
-  background-repeat: no-repeat;
-  background-size: 0;
-  padding: 4px;
-  border: 2px solid #777;
-  border-radius: 20px;
-  color: #555;
-  font-size: 1.4rem;
-  text-align: center;
-  transition: 0.3s;
-  &::after{
-    content: '';
-    background-color: #777;
-    position: absolute;
-    top: 30%;
-    left: 14px;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 8px;
-    transform:rotate(45deg);
-  }
-  &::before{
-    content: '';
-    background-color: #777;
-    position: absolute;
-    top: 44%;
-    left: 14px;
-    transform: translateY(-50%);
-    width: 2px;
-    height: 8px;
-    transform:rotate(-45deg);
-  }
-  &:hover{
-    background-size: 100%;
-    color: #fff;
-    &::after{
-      background-color: #fff;
-    }
-    &::before{
-      background-color: #fff;
+
+.link_edit{
+  &.project_btn{
+    @include sp{
+      top: 18px;
+      right: 2%;
     }
   }
+}
+.edit_btn{
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 36px;
+  height: 36px;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(86, 86, 86, 0.4);
+  z-index: 4;
+  span{
+    background-color: #555;
+    width: 4px;
+    height: 4px;
+    border-radius: 12px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    &:nth-child(1){
+      top: 26%;
+    }
+    &:nth-child(2){
+      top: 46%;
+    }
+    &:nth-child(3){
+      top: 66%;
+    }
+  }
+}
+#edit_btn_check:checked ~ .edit_links{
+  display: flex;
 }
 .edit_links{
   position: absolute;
   top: 50%;
-  right: 24px;
+  right: 0;
   transform: translateY(-50%);
-  width: 60%;
+  width: 18%;
   max-width: 280px;
-  display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   li{
     width: 49%;
     a{
@@ -140,25 +212,98 @@
       }
     }
   }
+  @include tab {
+    top: 0;
+    right: 44px;
+    transform: translateY(0);
+    width: 104px;
+    flex-direction: column-reverse;
+    z-index: 5;
+    li{
+      width: 100%;
+      margin: 0 0 6px;
+      a{
+        background-color: #bdead3;
+        padding: 8px 0;
+        border-radius: 8px;
+        color: #333;
+        font-weight: bold;
+        border: none;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      }
+      &:first-child{
+        a{
+          background-color: #d8b2b2;
+        }
+      }
+    }
+  }
+  @include sp {
+    right: 2%;
+    top: 38px;
+  }
 }
 // -----------------------------------------
 // 一覧画面
 // -----------------------------------------
 .project_all{
   display: flex;
+  flex-wrap: wrap;
   width: 94%;
   max-width: 1240px;
   margin: 0 auto;
   padding: 24px 0;
+  .project_phase_list{
+    display: none;
+    width: 100%;
+    @include tab {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 24px;
+      .phase_btn{
+        width: 24%;
+        text-align: center;
+        border: 2px solid #d1e6dd;
+        border-radius: 36px;
+        padding: 8px 0;
+        color: #eaf8f2;
+        font-size: 1.4rem;
+        font-weight: bold;
+        &.-active{
+          background-color: #00c66a;
+        }
+      }
+    }
+    @include sp {
+      justify-content: space-evenly;
+      .phase_btn{
+        width: auto;
+        border: 1.5px solid #d1e6dd;
+        margin: 0 0.4%;
+        padding: 6px calc(0.4px + 4.6vw);
+        font-size: calc(4px + 2.6vw);
+      }
+    }
+  }
   .project_box{
     background-color: rgba(255, 255, 255, 0.9);
-    width: 24%;
+    width: 24.4%;
     margin-right: 12px;
     padding: 14px;
     border-radius: 8px;
     max-height: calc(100vh - 150px);
     overflow-y: scroll;
     position: relative;
+    @include tab {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 16px;
+      &.-active{
+        display: block !important;
+      }
+    }
     &:last-child{
       margin-right: 0;
     }
@@ -186,13 +331,23 @@
     }
     ul{
       width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       li{
+        width: 100%;
         background-color: #fff;
         border-radius: 8px;
         margin: 12px 0 0;
         text-align: left;
         box-shadow: 0 0 8px rgba(110, 110, 110, 0.3);
         position: relative;
+        @include tab {
+          width: 49%;
+        }
+        @include sp {
+          width: 100%;
+        }
         a{
           padding: 12px;
           display: block;
@@ -272,7 +427,7 @@
       border-top: 8px solid #dc003e;
     }
     &._now{
-      width: 48%;
+      width: 48.6%;
       border-top: 8px solid #f0b801;
       ul{
         display: flex;
@@ -280,7 +435,13 @@
         flex-wrap: wrap;
         li{
           width: 49%;
+          @include sp {
+            width: 100%;
+          }
         }
+      }
+      @include tab {
+        width: 100%;
       }
     }
     &._before{
@@ -289,29 +450,44 @@
   }
 }
 
+
 // -----------------------------------------
 // 新規作成画面（フォーム）
 // -----------------------------------------
-.project_btn{
-  background-image: linear-gradient(to right, #fff, #fff);
-  border: 2px solid #fff;
-  color: #fff;
-  &::before{
-    background-color: #fff;
-  }
-  &::after{
-    background-color: #fff;
-  }
-  &:hover{
-    color: #1d945d;
+.return_link{
+  &.project_btn{
+    background-image: linear-gradient(to right, #fff, #fff);
+    border: 2px solid #fff;
+    color: #fff;
     &::before{
-      background-color: #1d945d;
+      background-color: #fff;
     }
     &::after{
-      background-color: #1d945d;
+      background-color: #fff;
+    }
+    &:hover{
+      color: #1d945d;
+      &::before{
+        background-color: #1d945d;
+      }
+      &::after{
+        background-color: #1d945d;
+      }
+    }
+    @include tab {
+      width: 104px;
+      left: -14px;
+      padding-left: 24px;
+      &::before,&::after{
+        left: 24px;
+      }
+    }
+    @include sp {
+      top: 32px;
     }
   }
 }
+
 .project_form{
   background-color: #fff;
   border-radius: 16px;
@@ -319,10 +495,12 @@
   width: 90%;
   max-width: 720px;
   margin: 0 auto;
-  h3{
-    font-size: 2.2rem;
-    font-weight: bold;
-    text-align: center;
+  @include tab{
+    padding: 16px 40px 40px;
+  }
+  @include sp{
+    width: 94%;
+    padding: 16px 5% 32px;
   }
 }
 .file_upload{
@@ -346,6 +524,12 @@
     font-size: 1.4rem;
     line-height: 1;
     margin-bottom: 4px;
+  }
+  @include sp {
+    input[name="project[files][]"]{
+      max-width: 100%;
+      font-size: 1.4rem;
+    }
   }
 }
 .flag_box{
@@ -481,8 +665,19 @@ input[name="project[member_flag]"] {
   background-color: #fff;
   border-radius: 12px;
   padding: 16px 80px;
+  @include tab{
+    width: 90%;
+    padding: 16px 40px;
+  }
+  @include sp {
+    width: 94%;
+    padding: 16px 4%;
+  }
   .project_date{
     position: relative;
+    @include tab{
+      padding-top: 44px;
+    }
     p{
       font-size: 1.8rem;
       margin: 8px 0;
@@ -521,6 +716,10 @@ input[name="project[member_flag]"] {
       top: 4px;
       left: 240px;
       display: block;
+      @include tab{
+        top: auto;
+        bottom: 2px;
+      }
       p{
         background-image: linear-gradient(to right, #1d945d, #1d945d);
         background-repeat: no-repeat;
@@ -539,23 +738,21 @@ input[name="project[member_flag]"] {
           content: '';
           background-color: #1d945d;
           position: absolute;
-          top: 50%;
+          top: 56%;
           right: 12px;
-          transform: translateY(-50%);
           width: 2px;
           height: 8px;
-          transform:rotate(45deg);
+          transform:translateY(-50%) rotate(45deg);
         }
         &::before{
           content: '';
           background-color: #1d945d;
           position: absolute;
-          top: 40%;
+          top: 44%;
           right: 12px;
-          transform: translateY(-50%);
           width: 2px;
           height: 8px;
-          transform:rotate(-45deg);
+          transform:translateY(-50%) rotate(-45deg);
         }
         &:hover{
           background-size: 100%;
@@ -565,6 +762,46 @@ input[name="project[member_flag]"] {
           }
           &::before{
             background-color: #fff;
+          }
+        }
+      }
+    }
+    @include sp {
+      padding-top: 36px;
+      padding-bottom: 56px;
+      p{
+        font-size: 1.5rem;
+        margin: 4px 0;
+        span{
+          padding: 1px 4px;
+          width: 24%;
+          margin-right: 6px;
+        }
+      }
+      .project_author{
+        top: 0;
+        right: 3%;
+        p{
+          font-size: 1.2rem;
+          line-height: 1.5;
+        }
+      }
+      .project_schedule{
+        left: 0;
+        p{
+          padding: 6px 32px 6px 12px;
+          font-size: 1.3rem;
+          &::after{
+            top: 56%;
+            right: 12px;
+            width: 2px;
+            height: 8px;
+          }
+          &::before{
+            top: 44%;
+            right: 12px;
+            width: 2px;
+            height: 8px;
           }
         }
       }
@@ -579,6 +816,13 @@ input[name="project[member_flag]"] {
     margin: 16px 0;
     p{
       font-size: 1.5rem;
+    }
+    @include sp {
+      padding: 10px 8px;
+      margin: 12px 0;
+      p{
+        font-size: 1.4rem;
+      }
     }
   }
   .project_file{
@@ -658,7 +902,7 @@ input[name="project[member_flag]"] {
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(100,100,100,0.2) inset;
         padding: 8px;
-        width: 86%;
+        width: calc(100% - 104px);
         height: 64px;
         font-size: 1.5rem;
       }
@@ -669,7 +913,7 @@ input[name="project[member_flag]"] {
         }
       }
       .comment_submit{
-        width: 13%;
+        width: 96px;
         input{
           background-color: #1d945d;
           width: 100%;
@@ -737,6 +981,99 @@ input[name="project[member_flag]"] {
           .comment_edit{
             display: block;
           }
+        }
+      }
+    }
+    @include sp {
+      position: relative;
+      h3{
+        font-size: 1.6rem;
+      }
+      #comment_form{
+        .error-message{
+          position: relative;
+          top: auto;
+          left: auto;
+          font-size: 1.3rem;
+        }
+        .comment_inner{
+          display: block;
+        }
+        textarea{
+          padding: 6px;
+          width: 100%;
+          height: 64px;
+          font-size: 1.4rem;
+        }
+        .field_with_errors{
+          width: 100%;
+        }
+        .comment_submit{
+          width: 40%;
+          margin: 6px 0 0 60%;
+          input{
+            padding: 6px 0;
+            font-size: 1.3rem;
+          }
+        }
+      }
+      .comment_list{
+        margin: 20px 0 12px;
+        li{
+          padding: 6px 8px;
+          overflow: hidden;
+          .comment_text{
+            font-size: 1.5rem;
+            margin-top: 4px;
+          }
+          .comment_edit_box{
+            .edit_btn{
+              position: absolute;
+              top: 4px;
+              right: 4px;
+              background-color: rgba(255, 255, 255, 0.5);
+              width: 32px;
+              height: 32px;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              padding: 2px;
+              border-radius: 2px;
+              box-shadow: 0 0 8px rgba(86, 86, 86, 0.1);
+              z-index: 4;
+              span{
+                background-color: #555;
+                width: 3px;
+                height: 3px;
+                border-radius: 12px;
+              }
+            }
+            .comment_edit{
+              background-color: rgba(57, 57, 57, 0.2);
+              display: none;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              right: 0;
+              li{
+                margin: 0 2%;
+                width: 32%;
+                opacity: 0.9;
+                a{
+                  padding: 8px 0;
+                  font-size: 1.4rem;
+                }
+              }
+            }
+            #comment_edit_check:checked ~ .comment_edit{
+              display: flex;
+            }
+          }
+          
         }
       }
     }
