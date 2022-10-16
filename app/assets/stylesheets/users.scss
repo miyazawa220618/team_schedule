@@ -32,8 +32,8 @@ $sp: 699px;
   }
   @include sp {
     padding: 60px 0 13.6vw;
-    min-height: calc(100vh - 38.8vw);
-    min-width: 270px;
+    min-height: calc(100vh - 134px);
+    min-width: 260px;
     position: relative;
   }
 }
@@ -170,7 +170,7 @@ $sp: 699px;
 
 .link_edit{
   position: absolute;
-  top: 24px;
+  top: 2px;
   right: 0;
   text-align: right;
   @include sp{
@@ -204,11 +204,11 @@ $sp: 699px;
     }
     @include sp {
       background-color: #fff;
-      width: 8vw;
-      height: 8vw;
+      width: 36px;
+      height: 36px;
       span{
-        width: 0.92vw;
-        height: 0.92vw;
+        width: 3px;
+        height: 3px;
       }
     }
   }
@@ -312,6 +312,19 @@ $sp: 699px;
         li{
           list-style: disc;
           font-size: 1.6rem;
+          padding-left: 1.6rem;
+          text-indent: -1.6rem;
+        }
+      }
+      @include tab{
+        .share_mylist{
+          li{
+            font-size: 1.5rem;
+            padding-left: 1.5rem;
+            text-indent: -1.5rem;
+            line-height: 1.3;
+            margin: 4px 0;
+          }
         }
       }
       @include sp{
@@ -321,7 +334,9 @@ $sp: 699px;
         }
         .share_mylist{
           li{
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            padding-left: 1.3rem;
+            text-indent: -1.3rem;
           }
         }
       }
@@ -449,20 +464,22 @@ $sp: 699px;
   }
   @include sp{
     border-radius: 12px;
-    padding: 4vw 2.4vw 4.8vw;
+    padding: 20px 3% 24px;
     margin: 8vw 0 6.4vw;
+    justify-content: center;
     li{
-      width: 46%;
+      width: auto;
       text-align: center;
-      margin: 2.8vw 0;
+      margin: 12px 4% 12px 0;
       &:nth-child(2n){
-        width: 52%;
+        margin-right: 0;
       }
       a{
-        padding: 2.4vw 1.2vw 2.4vw 3.2vw;
-        font-size: calc(5.2px + 2.4vw);
+        padding: 4px 1.2vw 8px 3.6vw;
+        font-size: calc(1.0rem + 1.1vw);
         &::after{
-          left: 2px;
+          top: 40%;
+          left: 4px;
           border-top: 5px solid transparent;
           border-left: 5px solid #1d945d;
           border-bottom: 5px solid transparent;
@@ -493,6 +510,7 @@ $sp: 699px;
   }
   @include sp {
     margin: 0 auto 0;
+    min-width: 192px;
   }
 }
 // -----------------------------------------

@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 
     @project_before = []
     projects.each do |project|
-      if Date.today.between?( project[:project_end] , (project[:project_end] + 40))
+      if Date.today.between?( project[:project_end] + 1 , (project[:project_end] + 40))
         @project_before.push(project)
       end
     end
