@@ -1,14 +1,10 @@
-<% content_for(:body_attributes) do %>
-  data-turbolinks="false"
-<% end %>
-
 <%= render "shared/header"%>
 
 <main class="login">
   <div class="wrapper _login">
 
     <aside class="f-en">
-      <h4>have a<br>good day<br>at work. </h4>
+      <h4>have a <br class="s-none">good day<br>at work. </h4>
       <ul>
         <li class="month"><%= Date.current.strftime('%m') %></li>
         <li class="day"><%= Date.current.strftime('%d') %></li>

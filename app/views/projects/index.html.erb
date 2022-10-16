@@ -2,6 +2,7 @@
 <main class="_project">
   <div class="search_box">
     <div class="ttl">
+    <p class="project_acco_btn none s-block">検索する<span></span></p>
     <%= search_form_for @q do |f| %>
       <div class="search_input">
         <%= f.label :users_id_eq, "ユーザー名を選択" %><br>
@@ -23,7 +24,13 @@
     </div>
   </div>
   <div class="project_all">
-    <section class="project_box _after">
+  <ul class="project_phase_list">
+    <li id="phase_all" class="phase_btn">全て</li>
+    <li id="phase_after" class="phase_btn">今後の予定</li>
+    <li id="phase_now" class="phase_btn">進行中</li>
+    <li id="phase_before" class="phase_btn">FIX</li>
+  </ul>
+    <section class="project_box _after none l-block" id="phase_after_sec">
       <h4>今後の予定<span><%= @project_after.count %></span></h4>
       <ul>
       <% @project_after.each do |project| %>
@@ -51,7 +58,7 @@
       <% end %>
       </ul>
     </section>
-    <section class="project_box _now">
+    <section class="project_box _now none l-block" id="phase_now_sec">
       <h4>進行中<span><%= @project_now.count %></span></h4>
       <ul>
       <% @project_now.each do |project| %>
@@ -79,7 +86,7 @@
       <% end %>
       </ul>
     </section>
-    <section class="project_box _before">
+    <section class="project_box _before none l-block" id="phase_before_sec">
       <h4>FIX<span><%= @project_before.count %></span></h4>
       <ul>
       <% @project_before.each do |project| %>

@@ -1,13 +1,25 @@
 <header>
-  <h2><%= link_to image_tag("team_schedule_logo.png") , "/", class:"header_logo" %></h2>
+  <h2><%= link_to image_tag("team_schedule_logo.png") , "/", data: {"turbolinks"=>false}, class:"header_logo" %></h2>
+  <% if user_signed_in? %>
+    <div class="hamburger_menu">
+      <input type="checkbox" id="menu_btn_check">
+      <label for="menu_btn_check" class="menu_btn"><span></span><span></span><span></span></label>
+      <nav class="menu_content">
+        <%= link_to "プロジェクト", projects_path, class: "header_list flex", id: "nav04", data: {"turbolinks"=>false} %>
+        <%= link_to "スケジュール", schedules_path, class: "header_list flex", id: "nav05", data: {"turbolinks"=>false} %>
+        <%= link_to "マイページ", user_path(current_user.id), class: "header_list flex", id: "nav06", data: {"turbolinks"=>false} %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_list _logout flex", data: {"turbolinks"=>false} %>
+      </nav>
+    </div>
+  <% end %>
   <nav>
   <% if user_signed_in? %>
-    <%= link_to "プロジェクト", projects_path, class: "header_list", id: "nav01", data: {"turbolinks"=>false} %>
-    <%= link_to "カレンダー", schedules_path, class: "header_list", id: "nav02", data: {"turbolinks"=>false} %>
-    <%= link_to "マイページ", user_path(current_user.id), class: "header_list", id: "nav03", data: {"turbolinks"=>false} %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_list _logout", data: {"turbolinks"=>false} %>
+    <%= link_to "プロジェクト", projects_path, class: "header_list flex s-none", id: "nav01", data: {"turbolinks"=>false} %>
+    <%= link_to "スケジュール", schedules_path, class: "header_list flex s-none", id: "nav02", data: {"turbolinks"=>false} %>
+    <%= link_to "マイページ", user_path(current_user.id), class: "header_list flex s-none", id: "nav03", data: {"turbolinks"=>false} %>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header_list _logout flex s-none", data: {"turbolinks"=>false} %>
   <% else %>
-    <%= link_to "新規登録", new_user_registration_path, class: "header_list", data: {"turbolinks"=>false} %>
+    <%= link_to "新規登録", new_user_registration_path, class: "header_list flex", data: {"turbolinks"=>false} %>
   <% end %>
   </nav>
 </header>

@@ -1,14 +1,10 @@
-<% content_for(:body_attributes) do %>
-  data-turbolinks="false"
-<% end %>
-
 <%= render "shared/header"%>
 <main class="login">
   <h4 class="ttl f-en">Welcome to Team Schedule!</h4>
   <div class="wrapper register">
     <h2>新規登録</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name),multipart: true) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
@@ -24,7 +20,7 @@
       <div class="field">
         <p class="_required">パスワード</p>
         <% if @minimum_password_length %>
-        <em>　　　(<%= @minimum_password_length %>文字以上・半角英数字の組合せ)</em>
+        <em>　　　<br class="none s-inline">(<%= @minimum_password_length %>文字以上・半角英数字の組合せ)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "text_field" %>
       </div>

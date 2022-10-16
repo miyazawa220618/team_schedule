@@ -21,7 +21,7 @@
       <% end %>
 
       <div class="field">
-        <p class="">パスワード</p> <i>(変更しない場合は空白のままにしてください)</i><br />
+        <p class="">パスワード</p> <br class="none s-inline"><i>(変更しない場合は空白のままにしてください)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "text_field" %><br />
         <% if @minimum_password_length %>
           <em><%= @minimum_password_length %>文字以上・半角英数字の組合せ</em>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="field">
-        <p class="_any">プロフィール画像</p> <i>(変更しない場合は空白のままにしてください)</i><br />
+        <p class="_any">プロフィール画像</p>　 　<br class="none s-inline"><i>(変更しない場合は空白のままにしてください)</i><br />
         <%= f.file_field :profile_image, id:"profile-image" %>
       </div>
 

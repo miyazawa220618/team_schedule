@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
 
     @project_before = []
     projects.each do |project|
-      if Date.today.between?( project[:project_end] , (project[:project_end] + 40))
+      if Date.today.between?( project[:project_end] + 1 , (project[:project_end] + 40))
         @project_before.push(project)
       end
     end
@@ -65,7 +65,6 @@ class ProjectsController < ApplicationController
   end
 
   def move_to_show
-      last_user = (@project.users.length) - 1
-      redirect_to action: :show unless (user_signed_in? && current_user.id == @project.users.ids[last_user])
+      redirect_to action: :show unless (user_signed_in? && current_user.id == @project.users.ids[0])
   end
 end
