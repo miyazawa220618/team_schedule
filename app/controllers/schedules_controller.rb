@@ -42,7 +42,7 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @shares = @schedule.shares.includes(:user)
+    @shares = @schedule.shares.includes(:user).order('share_date')
     @share = Share.new
 
     @hour = 0

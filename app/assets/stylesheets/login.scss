@@ -28,7 +28,7 @@ $sp: 699px;
   min-height: calc(100vh - 164px);
   padding: 40px 0 64px;
   @include sp {
-    padding: 4.8vw 0 12vw;
+    padding: 28px 0 32px;
   }
   .wrapper{
     // ======= ログイン画面 ========
@@ -42,7 +42,7 @@ $sp: 699px;
         min-width: 648px;
       }
       @include sp {
-        min-width: none;
+        min-width: auto;
       }
     }
     aside{
@@ -136,7 +136,7 @@ $sp: 699px;
     margin-bottom: 24px;
     text-align: center;
     @include sp {
-      font-size: 2.6rem;
+      font-size: 2.4rem;
       margin-bottom: 16px;
     }
   }
@@ -213,7 +213,7 @@ $sp: 699px;
     font-size: 1.5rem;
     @include sp {
       font-size: 1.4rem;
-      padding: 12px 12px;
+      padding: 10px 12px;
     }
     &:focus{
       background-color: #e4eee7;
@@ -237,6 +237,7 @@ $sp: 699px;
     margin: 24px auto;
   }
   @include sp {
+    width: 76%;
     margin: 18px auto;
   }
   &.actions{
@@ -363,6 +364,12 @@ $sp: 699px;
   }
   ._profile{
     height: 120px;
+  }
+  @include sp{
+    input[name="user[profile_image]"]{
+      max-width: 100%;
+      font-size: 1.4rem;
+    }
   }
 }
 // ======= 編集画面 ========

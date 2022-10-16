@@ -1,15 +1,22 @@
 <%= render "shares/header"%>
 <main class="_schedule">
+
+<div class="schedule_about_bg">
   <div class="schedule_about">
     <%= link_to "戻る", request.referer, class: "return_link", data: {"turbolinks"=>false} %>
     <h3><span><%= link_to @schedule.project.name, project_path(@schedule.project_id) %></span><br>
     <%= @schedule.title %></h3>
-    
-    <ul class="edit_links">
-      <li><%= link_to "削除", schedule_path(@schedule.id), method: :delete, data: {"turbolinks"=>false} %></li>
-      <li><%= link_to "編集", edit_schedule_path(@schedule.id) %></li>
-    </ul>
-    <h5 class="edit_time">最終更新日：<%= @schedule.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></h5>
+
+    <div class="schedule_edit_box">
+      <input type="checkbox" id="schedule_edit_check" class="none">
+      <label for="schedule_edit_check" class="edit_btn none m-flex"><span></span><span></span><span></span></label>
+      <ul class="edit_links flex m-none">
+        <li><%= link_to "削除", schedule_path(@schedule.id), method: :delete, data: {"turbolinks"=>false} %></li>
+        <li><%= link_to "編集", edit_schedule_path(@schedule.id) %></li>
+      </ul>
+    </div>
+
+    <h5 class="edit_time">最終更新日：<br class="l-none"><%= @schedule.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></h5>
     <p>
       <% if @schedule.work_id == 2 %>
       <span class="_director"><%= @schedule.work.name %></span>
@@ -21,23 +28,28 @@
       <%= @schedule.start_date %> 〜 <%= @schedule.end_date %>
     </p>
   </div>
+</div>
+  
   
   <h3 class="shares_ttl"><span>実稼働日メモ</span></h3>
-  <div class="shares_wrapper">
   <% unless @schedule.end_date < Date.today %>
-  <div class="share_form" id="share_form">
-    <%= render "shares/new" %>
-  </div>
-  <div class="person_hour_half">
-  <div id="share_form"></div>
-    <%= render "shares/index"%>
+  <a href="#share_form" class="shares_anch none s-block">メモを投稿する</a>
+  <div class="shares_wrapper">
+    <div class="share_form" id="share_form">
+      <%= render "shares/new" %>
+    </div>
+    <div class="person_hour_half">
+      <%= render "shares/index"%>
+    </div>
   </div>
   <% else %>
-  <div class="person_hour">
-    <%= render "shares/index"%>
+  <div class="shares_wrapper">
+    <div class="person_hour">
+      <%= render "shares/index"%>
+    </div>
   </div>
    <% end %>
-  </div>
+  
 
 </main>
 <%= render "shared/footer"%>

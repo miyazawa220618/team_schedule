@@ -194,11 +194,36 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
-
 jQuery(function($) {
   $('.project_acco_btn').click(function() {
     $(this).toggleClass('-open');
     $(this).next().slideToggle();
+  });
+});
+
+$(function () {
+  $('a[href^="#"]').click(function () {
+    let speed = 400;
+    const href = $(this).attr("href");
+    const target = $(href == "#" || href == "" ? 'html' : href);
+    const position = target.offset().top;
+    $('body,html').animate({ scrollTop: position }, speed, 'swing');
+    return false;
+  });
+});
+
+window.addEventListener("load", function(){
+  let speed = 400;
+  const element = document.getElementById('share_form');
+  if (!element) return null;
+  const rect = element.getBoundingClientRect();
+  const position = rect.top + window.pageYOffset;
+  const editBtn = document.querySelectorAll(".share_edit_btn a")
+  
+  editBtn.forEach(function(e){
+    e.addEventListener('click',function(){
+      $('body,html').animate({ scrollTop: position }, speed, 'swing');
+    })
   });
 });
 

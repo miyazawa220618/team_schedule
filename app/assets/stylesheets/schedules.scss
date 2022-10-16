@@ -25,14 +25,14 @@ $sp: 699px;
 // -----------------------------------------
 ._schedule{
   background-color: #d6dfd6;
-  padding: 8px 0 24px;
+  padding: 0 0 24px;
   width: 100%;
   min-height: calc(100vh - 164px);
   border-bottom: 2px solid #ddd;
   .search_box{
     background-color: rgba(255, 255, 255, 0.9);
     padding: 16px 0 24px;
-    margin-top: -8px;
+    margin-top: 0;
     margin-bottom: 32px;
   }
   .ttl{
@@ -41,7 +41,7 @@ $sp: 699px;
     min-width: 1000px;
     margin: 0 auto;
     h4{
-      padding: 20px 0 24px;
+      padding: 32px 0 24px;
       font-size: 2.8rem;
       font-weight: bold;
       text-align: center;
@@ -50,16 +50,58 @@ $sp: 699px;
     .link_new{
       top: 60%;
     }
+    @include tab {
+      width: 94%;
+      min-width: auto;
+    }
+  }
+  @include sp{
+    min-height: calc(100vh - 134px);
+    .search_box{
+      padding: 56px 0 2px;
+    }
+    .ttl{
+      width: 100%;
+      h4{
+        padding: 48px 0 16px;
+        font-size: 2.2rem;
+      }
+      .link_new{
+        top: -48px;
+      }
+    }
+    .return_link{
+      top: 12px;
+      left: calc(-3% - 16px);
+      transform: none;
+      padding-left: 20px;
+      &::after,&::before{
+        left: 28px;
+      }
+    }
+  }
+  .schedule_about_bg{
+    background-color: #a2d1bb;
+    padding: 4px 0 40px;
+    box-shadow: 0 6px 12px rgba(9, 119, 68, 0.3);
+    @include sp {
+      padding: 0 0 28px;
+    }
   }
   .schedule_about{
     position: relative;
     width: 94%;
+    padding: 24px 0 0;
     margin: 0 auto;
     h3{
       font-size: 2.6rem;
       line-height: 1.6;
       font-weight: bold;
       text-align: center;
+      @include tab {
+        width: calc(100% - 280px);
+        margin: 0 auto;
+      }
       span{
         // background-color: #1d945d;
         // border-radius: 4px;
@@ -72,6 +114,20 @@ $sp: 699px;
           padding: 4px 8px;
           color: #000;
           line-height: 1;
+        }
+      }
+    }
+    @include sp {
+      padding: 0;
+      h3{
+        font-size: 2.2rem;
+        width: 100%;
+        padding-top: 48px;
+        span{
+          font-size: 1.4rem;
+          a{
+            padding: 3px 8px;
+          }
         }
       }
     }
@@ -100,6 +156,14 @@ $sp: 699px;
           background-color: #1379d0;
         }
       }
+      @include sp {
+        font-size: 1.3rem;
+        span {
+          font-size: 1.1rem;
+          padding: 2px 4px;
+          margin-right: 4px;
+        }
+      }
     }
     .edit_time{
       position: absolute;
@@ -109,6 +173,17 @@ $sp: 699px;
       display: inline-block;
       color: #555;
       font-size: 1.4rem;
+      @include tab{
+        top: 20%;
+        font-size: 1.2rem;
+        right: 0;
+      }
+      @include sp {
+        top: 12px;
+        right: 44px;
+        transform: none;
+        font-size: 1.0rem;
+      }
     }
   }
   .schedule_form{
@@ -118,10 +193,9 @@ $sp: 699px;
     width: 90%;
     max-width: 720px;
     margin: 0 auto;
-    h3{
-      font-size: 2.2rem;
-      font-weight: bold;
-      text-align: center;
+    @include sp {
+      border-radius: 12px;
+      padding: 20px 4% 32px;
     }
   }
 }
@@ -227,6 +301,68 @@ $sp: 699px;
     }
   }
 }
+.schedule_search{
+  @include tab{
+    .search_input{
+      .search_input_keyword{
+        width: 184px;
+        margin-top: 4px;
+        margin-right: 8px;
+      }
+      input{
+        padding: 8px 10px;
+        font-size: 1.3rem;
+      }
+      .search_input_list{
+        width: 108px;
+        margin-right: 8px;
+        select{
+          padding: 11.4px 10px;
+          font-size: 1.3rem;
+        }
+        &::before{
+          right: 12px;
+          border-top: 5px solid #1d945d;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+        }
+      }
+    }
+    .search_submit{
+      width: 56px;
+      font-size: 1.3rem;
+    }
+  }
+  @include sp{
+    .search_input{
+      margin: 8px 0;
+      .search_input_keyword{
+        width: 90%;
+        margin-top: 4px;
+        margin-right: 0;
+      }
+      input{
+        padding: 8px 10px;
+        font-size: 1.4rem;
+      }
+      .search_input_list{
+        width: 60%;
+        margin-right: 0;
+        select{
+          padding: 12px 10px;
+          font-size: 1.4rem;
+        }
+      }
+    }
+    .search_submit{
+      width: 48%;
+      font-size: 1.4rem;
+      input{
+        padding: 8px 0;
+      }
+    }
+  }
+}
 
 .project_acco_btn{
   width: 100%;
@@ -274,15 +410,25 @@ $sp: 699px;
   &._look{
     display: block;
   }
+  @include tab {
+    overflow-x: scroll;
+  }
+  @include sp {
+    width: 94%;
+    margin: 12px auto;
+  }
 }
 .accordion_btn{
   background-color: rgba(255, 255, 255, 0.6);
   padding: 8px;
-  margin: 24px auto 8px;
+  margin: 24px auto 12px;
   width: 90%;
   min-width: 1000px;
   text-align: center;
   cursor: pointer;
+  &#btn_bottom{
+    margin: 12px auto 24px;
+  }
   span{
     color: #1d945d;
     font-size: 1.6rem;
@@ -330,6 +476,16 @@ $sp: 699px;
       &::before{
         left: -18px;
       }
+    }
+  }
+  @include tab {
+    width: 94%;
+    min-width: auto;
+  }
+  @include sp {
+    padding: 6px;
+    span{
+      font-size: 1.5rem;
     }
   }
 }
@@ -388,24 +544,16 @@ $sp: 699px;
         z-index: 1;
       }
       &:nth-child(2){
-        &::after{
-          left: 40%;
-        }
+        &::after{left: 40%;}
       }
       &:nth-child(3){
-        &::after{
-          left: 60%;
-        }
+        &::after{left: 60%;}
       }
       &:nth-child(4){
-        &::after{
-          left: 80%;
-        }
+        &::after{left: 80%;}
       }
       &:nth-child(5){
-        &::after{
-          border-left: none;
-        }
+        &::after{border-left: none;}
       }
     }
   }
@@ -453,12 +601,81 @@ $sp: 699px;
       background-color: #1379d0;
     }
   }
+  @include tab {
+    width: 94%;
+    min-width: 540px;
+    .date_box{
+      li{
+        font-size: 1.5rem;
+      }
+    }
+  }
+  @include sp {
+    .date_box{
+      li{
+        font-size: 1.4rem;
+        padding: 6px 0;
+        &._holiday{
+          &::before{
+            top: 26px;
+          }
+        }
+      }
+    }
+    .schedule_border{
+      padding: 0;
+      margin-bottom: 3px;
+      list-style: none;
+      position: relative;
+      z-index: 2;
+      &:last-child{
+        margin-bottom: 0;
+      }
+      a{
+        font-size: 1.1rem;
+        padding: 2.5px 4px;
+      }
+    }
+  }
 }
+// -----------------------------------------
+// 詳細画面
+// -----------------------------------------
+.schedule_edit_box{
+  .edit_btn{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+  }
+  #schedule_edit_check:checked ~ .edit_links{
+    display: flex;
+    top: 48px;
+    right: 36px;
+  }
+  @include sp{
+    .edit_btn{
+      top: 10px;
+    }
+    #schedule_edit_check:checked ~ .edit_links {
+      top: 48px;
+      right: 0;
+    }
+  }
+}
+
+
 // -----------------------------------------
 // 新規作成画面（プロジェクトを作成してね）
 // -----------------------------------------
 ._form{
   position: relative;
+  @include sp {
+    .ttl{
+      width: 94%;
+    }
+  }
 }
 .non_form{
   margin: 64px auto;

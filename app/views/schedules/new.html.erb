@@ -1,10 +1,11 @@
 <%= render "shared/header"%>
 
 <main class="_schedule _form">
-  <%= link_to "戻る", request.referer, class: "return_link" %>
+  <div class="ttl">
+    <%= link_to "戻る", request.referer, class: "return_link" %>
+    <h4>スケジュール作成</h4>
+  </div>
   <div class="schedule_form">
-
-  <h3>スケジュール作成</h3>
   <% unless Project.count == 0 %>
     <%= render "form"%>
   <% else %>
