@@ -7,11 +7,13 @@
     </div>
     <section>
       <h3><%= @user.nickname %>さん <br class="none s-inline"><span id="my_work"><%= @user.work.name %></span></h3>
+      <% if current_user.id == @user.id %>
       <div class="link_edit">
         <input type="checkbox" id="edit_btn_check" class="none">
         <label for="edit_btn_check" class="edit_btn none s-ib"><span></span><span></span><span></span></label>
         <div class="s-none"><%= link_to '編集', edit_user_registration_path %></div>
       </div>
+      <% end %>
       <p class="s-none">
       <% if @user.profile_text.present? %>
         <%= safe_join(@user.profile_text.split("\n"),tag(:br)) %>
