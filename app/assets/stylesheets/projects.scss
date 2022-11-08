@@ -670,6 +670,91 @@ input[name="project[member_flag]"] {
     }
   }
 }
+.drop_file{
+  width: 100%;
+  margin-top: 4px;
+  position: relative;
+  &::after{
+    content: '';
+    background-color: rgba(199, 206, 62, 0.4);
+    width: 0;
+    height: 0;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+  &._mask{
+    &::after{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  label{
+    &.asdndzone{
+      max-width: none !important;
+      min-height: auto !important;
+      padding: 56px 12px !important;
+      font-size: 1.6rem !important;
+      letter-spacing: 0 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      overflow: hidden;
+      @include sp {
+        padding: 48px 8px !important;
+      }
+      #drop_file_text{
+        font-weight: normal;
+        line-height: 1.4;
+        font-size: 1.4rem;
+        width: 100%;
+        @include sp {
+          font-size: 1.2rem;
+        }
+      }
+      input{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+      }
+      #asdndz-project_files__icon-container,#asdndz-share_memo_files__icon-container{
+        margin: 0;
+        padding: 0;
+        width: 96%;
+        display: flex;
+        flex-wrap: wrap;
+        div{
+          .direct-upload{
+            position: relative;
+            z-index: 3;
+            height: auto !important;
+            padding: 4px 8px !important;
+            min-width: 116px !important;
+            .direct-upload__filename{
+              max-width: 160px !important;
+              font-size: 1.1rem !important;
+            }
+            .direct-upload__filesize{
+              padding-left: 4px !important;
+              line-height: 16px;
+            }
+          }
+          .direct-upload__remove{
+            position: relative;
+            z-index: 3;
+            margin-right: 12px !important;
+          }
+        }
+      }
+    }
+  }
+}
 
 // -----------------------------------------
 // 詳細画面
