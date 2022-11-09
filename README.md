@@ -58,14 +58,14 @@
 
 # 実装した機能についての画像やGIFおよびその説明
 1. **ログイン画面をルートパスに設定**
-![Image from Gyazo](https://i.gyazo.com/1869feb2f5b468e3860cf37c5a62bbb3.jpg)
+[![Image from Gyazo](https://i.gyazo.com/6f53c8c3d5dfb81ac1556e1b7c1d76c6.jpg)](https://gyazo.com/6f53c8c3d5dfb81ac1556e1b7c1d76c6)
     - web制作会社が使用することを想定したサイトのため、デスク画像を背景に使用し、「have a good day at work.（お仕事がんばってね）」の一言を添えています。   
     <br>
 
 2. **プロジェクト一覧画面のリストの区分けとレスポンシブ**   
 ▼PC表示はこちら
 [![Image from Gyazo](https://i.gyazo.com/4fb0951c232123eaf65a47a8c979aa31.jpg)](https://gyazo.com/4fb0951c232123eaf65a47a8c979aa31)
-▼SP表示はこちら
+▼SP表示はこちら   
 [![Image from Gyazo](https://i.gyazo.com/63fe48017246d74a03c2bd27c42fc293.png)](https://gyazo.com/63fe48017246d74a03c2bd27c42fc293)
     - javascriptでプロジェクト作成時に設定した「開始日」と「FIX予定日」から、今後の予定・進行中・FIXの3区分に分けて表示しています。   
     ［補足］  
