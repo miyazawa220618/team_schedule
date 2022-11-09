@@ -69,7 +69,7 @@ const toggle = () => {
 const memberCheck = () => {
   const checkField = document.getElementById('check_member');
   const input = document.querySelectorAll('input[type="checkbox"][name="project[user_ids][]');
-  const label = document.querySelectorAll('label:not(.menu_btn, .edit_btn)');
+  const label = document.querySelectorAll('label:not(.asdndzone):not(.menu_btn):not(.edit_btn)');
   if (!checkField) return null;
   for (let i = 0; i < label.length; i++){
     const inputA = input[i];
@@ -218,7 +218,7 @@ window.addEventListener("load", function(){
   if (!element) return null;
   const rect = element.getBoundingClientRect();
   const position = rect.top + window.pageYOffset;
-  const editBtn = document.querySelectorAll(".share_edit_btn a")
+  const editBtn = document.querySelectorAll(".share_edit_btn a");
   
   editBtn.forEach(function(e){
     e.addEventListener('click',function(){
@@ -226,4 +226,7 @@ window.addEventListener("load", function(){
     })
   });
 });
+
+
+
 
