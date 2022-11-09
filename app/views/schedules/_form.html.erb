@@ -6,9 +6,9 @@
         <p class="_required">プロジェクトを選択する</p><br />
         <div class="form-list">
         <% if @id.presence %>
-          <%= f.collection_select :project_id, Project.where("project_end >= ?", Date.today), :id, :name, {selected: @id}, {class:"text_field", id:"work-list"} %>
+          <%= f.collection_select :project_id, Project.where("project_end >= ?", Date.today), :id, :name, {selected: @id}, {class:"text_field"} %>
         <% else %>
-          <%= f.collection_select :project_id, Project.where("project_end >= ?", Date.today), :id, :name, {prompt: "選択してください"}, {class:"text_field", id:"work-list"} %>
+          <%= f.collection_select :project_id, Project.where("project_end >= ?", Date.today), :id, :name, {prompt: "選択してください"}, {class:"text_field"} %>
         <% end %>
         </div>
       </div>
