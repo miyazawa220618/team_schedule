@@ -25,7 +25,7 @@
       <p><span>FIX予定日</span><%= @project.project_end %></p>
       <div class="project_author">
         <p>最終更新日：<%= @project.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
-        <% @project.users.last(1).each do |member| %>
+        <% @project.users.first(1).each do |member| %>
           <p>作成者：<%= member.nickname %></p>
         <% end %>
       </div>
@@ -35,9 +35,11 @@
         <% end %>
       <% end %>
     </div>
+
     <div class="project_about">
       <p><%= safe_join(@project.about.split("\n"),tag(:br)) %><p>
     </div>
+
     <ul class="project_file">
     <% @project.files.each do |file| %>
       <% if file.representable? %>
@@ -53,7 +55,9 @@
       <% end %>
     <% end %>
     </ul>
-    <dl class="project_member">
+
+    <div class="project_remark">
+      <dl class="project_member">
       <dt><span>プロジェクトメンバー</span></dt>
       <% @project.users.each do |member| %>
       <dd>
@@ -62,6 +66,26 @@
       </dd>
       <% end %>
     </dl>
+    <dl class="project_hour">
+      <dt><span>プロジェクト工数</span></dt>
+      <dd>
+        <h5>合計</h5>
+        <p class="f-en"><%= @share_designer + @share_engineer + @sum %><small>day</small></p>
+      </dd>
+      <dd>
+        <h5>デザイナー工数</h5>
+        <p class="f-en"><%= @share_designer %><small>day</small></p>
+      </dd>
+      <dd>
+        <h5>エンジニア工数</h5>
+        <p class="f-en"><%= @share_engineer %><small>day</small></p>
+      </dd>
+      <dd>
+        <h5>進捗管理(15%)</h5>
+        <p class="f-en"><%= @sum %><small>day</small></p>
+      </dd>
+    </dl>
+    </div>
 
     <section class="comment_box">
       <h3>コメント欄</h3>

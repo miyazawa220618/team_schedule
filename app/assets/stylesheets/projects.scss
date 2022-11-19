@@ -935,7 +935,13 @@ input[name="project[member_flag]"] {
       max-width: 400px;
     }
   }
-  .project_member{
+  .project_remark{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .project_member,.project_hour{
+    width: 48%;
     dt{
       background-image: linear-gradient(to bottom, #ddd, #ddd);
       background-repeat: no-repeat;
@@ -977,6 +983,32 @@ input[name="project[member_flag]"] {
       }
     }
   }
+
+  .project_hour{
+    dt{
+      margin-bottom: 8px;
+    }
+    dd{
+      margin-top: 6px;
+      align-items: baseline;
+      h5{
+        padding: 0 8px 0 0;
+        margin-right: 4px;
+        font-size: 1.4rem;
+        // font-weight: bold;
+      }
+      p{
+        font-size: 2.4rem;
+        border-bottom: 1.5px solid #1d945d;
+        small{
+          font-size: 72%;
+          color: #333;
+        }
+      }
+    }
+  }
+
+
   .comment_box{
     margin-top: 28px;
     padding-top: 12px;

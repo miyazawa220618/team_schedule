@@ -34,6 +34,24 @@ class ProjectsController < ApplicationController
   def show
     @comments = @project.comments.includes(:user).order(id: :desc)
     @comment = Comment.new
+    designer = @project.schedules.includes(:shares).where(work_id: '3')
+    engineer = @project.schedules.includes(:shares).where(work_id: '4')
+
+    @share_designer = 0
+    designer.each do |d|
+      d.shares.each do |share|
+        @share_designer += share.hour.name.to_f
+      end
+    end
+
+    @share_engineer = 0
+    engineer.each do |e|
+      e.shares.each do |share|
+        @share_engineer += share.hour.name.to_f
+      end
+    end
+
+    @sum = (@share_designer + @share_engineer) * 0.15
   end
 
   def edit
