@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :shares, only: [:create, :edit, :update, :destroy]
   end
 
-  get '*not_found', to: 'application#routing_error'
-  post '*not_found', to: 'application#routing_error'
+  # get '*not_found', to: 'application#routing_error'
+  # post '*not_found', to: 'application#routing_error'
 end
